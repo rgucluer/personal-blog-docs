@@ -26,7 +26,6 @@ When you see these variables through the document , enter the values valid for y
   - payload-app-directory: cpm-cms
   - payload-app-full-path: /home/< local-user-name >/< local-workspace >/< payload-app-directory >
     - example: /home/jack/workspace/cpm-cms
-  
 
 - GitHub
   - github-user-key: github-ssh-key

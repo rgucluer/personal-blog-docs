@@ -6,6 +6,8 @@ Personal Blog is a modified version of Payload CMS Website Template.
 
 ## [Install Personal Blog Production Environment ](docs/personal-blog/install-personal-blog-production.md)
 
+## [Daily Operations - Development Environment](docs/personal-blog/daily-dev.md)
+
 ## LICENSE
 Copyright 2026 Recep GÜÇLÜER rgucluer@gmail.com
 

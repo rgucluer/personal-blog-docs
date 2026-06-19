@@ -1,6 +1,7 @@
 
 - Check ownership of files/directories in payload container
 
+- Last resort:
 - Wipe & start over
   - ATTENTION, all data will be deleted.
   - Delete payload service
@@ -27,7 +28,7 @@
         - Name: personal-blog-dev
         - Description: Personal Blog
         - Domains for payload: https://www.devblogserver.my-domain.com,https://devblogserver.my-domain.com
-        - Diffrent entries from the document
+        - Different entries from the document
           - NEXT_PUBLIC_SERVER_URL=https://www.devblogserver.my-domain.com
           - DATABASE_URL=< Mongo URL (internal) from Coolify UI >
 

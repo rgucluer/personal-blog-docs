@@ -28,7 +28,7 @@ ncdu
 
 ncdu ( NCurses Disk Usage ) utility provides easy listing of file and directory sizes
 
-Use ncdu to find cause of disk usage. Delete where possible. (d: delete, q: exit)
+Use ncdu to find the cause of disk usage. Delete where possible. (d: delete, q: exit)
 
 ---
 
