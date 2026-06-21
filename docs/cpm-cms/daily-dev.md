@@ -119,6 +119,7 @@ git branch --show-current
 - Make changes you see fit for your application.
 - Check locally,
   - Mongo URL (public) must be enabled, and DATABASE_URL must be set in .env file.
+  - MongoDB service is running
   ```bash
   cd < payload-app-full-path >
   ```
@@ -158,7 +159,7 @@ git push origin dev
 #### Redeploy on VM
 - Coolify UI on VM (https://coolify.devserver1.my-domain.com)
   - Project -> < project-name > -> payload 
-    - Stop -> Check "Docker Clean ..."
+    - Stop -> Check "Run Docker Clean ..." -> Continue -> Confirm
       - Wait, see the red "Exited" label
     - Click "Reload Compose file"
     - Save
