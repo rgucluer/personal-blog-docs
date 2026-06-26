@@ -2,15 +2,15 @@
 
 Operations below may destroy content, and databases. Backup before any operation. 
 
-### [Development Environment](docs/development.md)
+### [Development Environment](development.md)
 Run Coolify in a Virtual Machine.
 
-### [Production Environment](docs/production.md)
+### [Production Environment](production.md)
 Run Coolify on a Virtual Private Server.
 
-### [Variables](docs/variables.md)
+### [Variables](variables.md)
 
-### [Uninstall Coolify](docs/coolify/uninstall-coolify.md)
+### [Uninstall Coolify](coolify/uninstall-coolify.md)
 
 ### LICENSE
 Copyright 2026 Recep GÜÇLÜER rgucluer@gmail.com

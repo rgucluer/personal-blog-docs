@@ -8,6 +8,8 @@ Personal Blog is a modified version of Payload CMS Website Template.
 
 ## [Daily Operations - Development Environment](docs/personal-blog/daily-dev.md)
 
+## [Daily Operations - Production Environment](docs/personal-blog/daily-prod.md)
+
 ## LICENSE
 Copyright 2026 Recep GÜÇLÜER rgucluer@gmail.com
 

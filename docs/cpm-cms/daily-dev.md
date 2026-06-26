@@ -164,6 +164,16 @@ git push origin dev
     - Click "Reload Compose file"
     - Save
     - Click Advanced -> Force Deploy
+    - Wait 3-4 minutes after deployment finishes.
+
+    - Open https://www.< dev-domain-name >/admin
+      - Login
+      - Click Seed your database
+        - We do this after a deployment
+        - TODO: Implement a backup/restore process to persist existing content between deployments.
+        - Open https://www.< dev-domain-name >
+        - Home page renders with images and default theme
+
 
 ### Update documentation
 - Update documentation about changes.
