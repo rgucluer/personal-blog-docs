@@ -10,6 +10,7 @@ I refer to cpm-cms all the time, because it is public. currently personal-blog i
 - Start Virtual Machine
   - VM Name: vmblog
 - Development sub domain name: devblogserver
+- coolify-server-name: devblogserver
 - Domain name: my-domain.com 
 - Check /etc/hosts of local machine for the IP of VM
   - Make changes in /etc/hosts according to my setup

@@ -3,7 +3,7 @@
 - Coolify Web UI -> Projects -> cpm-cms ( production )
   - Applications -> cpm-cms ...
     - Configuration -> General
-      - Name: personal-blog-dev
+      - Name: payload
       - Description: Payload template (website) for Coolify
       - Build Pack: Docker Compose
       - Domains -> Domains for payload:

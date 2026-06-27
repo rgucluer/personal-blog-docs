@@ -37,6 +37,7 @@ The following, do work together to make Personal Blog work
 - MongoDB : https://github.com/mongodbs
 - Cherrytree: https://github.com/giuspen/cherrytree
 - VSCodium: https://vscodium.com/
+- Meld: https://meldmerge.org/
 - HTML, CSS, Javascript, http, https, yaml
 - And all other software, languages, protocols, standards make the ones work in this list.
 - Thanks for the community

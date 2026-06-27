@@ -224,11 +224,11 @@ git clone https://github.com/rgucluer/cpm-cms.git personal-blog
       - Coolify Web UI -> Projects -> personal-blog ( production )
         - Applications -> personal-blog
           - Name : payload
-          - Domains for payload: https://www.devblogserver.my-domain.com,https://devblogserver.my-domain.com
+          - Domains for payload: https://www.< dev-domain-name >,https://< dev-domain-name >
       - Configuration -> Environment Variables
         - NODE_OPTIONS=--no-deprecation --max-old-space-size=2048
         - HOSTNAME, DATABASE_URL, PAYLOAD_SECRET, CRON_SECRET, PREVIEW_SECRET
-        - NEXT_PUBLIC_SERVER_URL : https://www.devblogserver.< domain-name >
+        - NEXT_PUBLIC_SERVER_URL : https://www.< dev-domain-name >
       - Configuration -> Git Source
         - Repository: < github-username >/personal-blog
         - Branch: dev
@@ -245,7 +245,7 @@ git clone https://github.com/rgucluer/cpm-cms.git personal-blog
       - Save
       - Restart Proxy
     - Check the Application
-	  - https://www.devblogserver.< domain-name >
+	  - https://www.< dev-domain-name >
 ---
 
 Notes:
