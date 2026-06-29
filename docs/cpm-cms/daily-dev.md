@@ -115,35 +115,62 @@ git switch -c dev
 git branch --show-current
 ```
 
-- Stop Payload service in VM
-
-- Make changes you see fit for your application.
-- Check locally,
+### Local Development Mode
+- Make changes to switch to Local Development Mode
+  - Stop Payload service in VM
   - Mongo URL (public) must be enabled, and DATABASE_URL must be set in .env file.
-  - MongoDB service is running
+    - MongoDB service is running
+  - .env file content must be similar to VM Payload CMS Environment Variables
+    - But set NEXT_PUBLIC_SERVER_URL=http://localhost:3000
+  - next.config.ts  comment out output setting
+    ```typescript
+    // output: 'standalone',
+    ```
+- Run server
   ```bash
   cd < payload-app-full-path >
   ```
-  - .env file content must be similar to VM Payload CMS Environment Variables
-  
   ```bash
-  pnpm install
+  pnpm dev
   ```
-  ```bash
-  pnpm build
-  ```
-  - Copy < payload-app-full-path >/public into < payload-app-full-path >/.next/standalone
-  - Copy < payload-app-full-path >/.next/static into < payload-app-full-path >/.next/standalone/.next
-  ```bash
-  node .next/standalone/server.js
-  ```
-  - Open a web browser, navigate to http://localhost:3000
-  - This renders the homepage of Payload.
-  - ```CTRL``` + ```C``` on terminal to stop the service
+- Open a web browser, navigate to http://localhost:3000
+- This renders the homepage of Payload without images.
+- Open http://localhost:3000/admin
+  - Login
+  - Click "Seed your database"
+  - Wait seeding to finish.
+  - Open http://localhost:3000
+  - This renders the homepage of Payload with images.
+- Make changes, check results.
+- <kbd>CTRL</kbd> + <kbd>C</kbd> on terminal to stop the service
 
-    
+### Local Production Mode
+- next.config.ts  uncomment output setting
+```typescript
+output: 'standalone',
+```
+```bash
+pnpm install
+```
+```bash
+pnpm build
+```
+- Copy < payload-app-full-path >/public into < payload-app-full-path >/.next/standalone
+- Copy < payload-app-full-path >/.next/static into < payload-app-full-path >/.next/standalone/.next
+```bash
+node .next/standalone/server.js
+```
+- Open a web browser, navigate to http://localhost:3000
+- This renders the homepage of Payload with/without images.
+- Open http://localhost:3000/admin
+  - Login
+  - Click "Seed your database"
+  - Wait seeding to finish.
+  - Open http://localhost:3000
+  - This renders the homepage of Payload with images.
+- <kbd>CTRL</kbd> + <kbd>C</kbd> on terminal to stop the service
 
-#### git commit
+#### Commit changes
 ```bash
 git add .
 ```

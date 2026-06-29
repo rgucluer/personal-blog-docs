@@ -2,7 +2,8 @@
 When you see these variables through the document , enter the values valid for your setup. Do not enter the angle brackets ( < > ).
 
 - General
-  - timezone : Universal
+  - timezone : 
+    - Universal
     - Utc
     - Europe/Istanbul
 
