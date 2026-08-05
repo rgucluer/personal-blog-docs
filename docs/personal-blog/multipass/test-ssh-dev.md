@@ -1,0 +1,43 @@
+## Test Virtual Machine ssh login
+
+```bash
+ssh root@< virtual_machine_IP >
+```
+
+Will ask "Are you sure you want to continue connecting (yes/no/[fingerprint])?" , write  "yes" and press <kbd>ENTER</kbd> .
+
+If you set a passphraze for your ssh key, it may ask for the passphraze.
+( It won't ask for a passphraze, if you add your ssh key to ssh-agent beforehand. )
+
+Now, we are in the Virtual Machine. To exit from ssh session, press <kbd>CTRL</kbd>+<kbd>D</kbd>.
+
+Now, we are back in Controller PC .
+
+Now, stop - start the VM and try to ssh again.
+
+```bash
+multipass stop vmblog
+```
+
+```bash
+multipass start vmblog
+```
+
+```bash
+ssh root@< virtual_machine_IP >
+```
+
+To exit from ssh session, press <kbd>CTRL</kbd>+<kbd>D</kbd>.
+
+Do the same thing for vm2user
+
+```bash
+ssh vm2user@< virtual_machine_IP >
+```
+
+Now, we are in the Virtual Machine. To exit from ssh session, press <kbd>CTRL</kbd>+<kbd>D</kbd>.
+
+---
+
+### Continue with: Test Virtual Machine ssh login with domain name [multipass/test-ssh-dev-domain](install-multipass-create-vm.md#test-virtual-machine-ssh-login-with-domain-name-multipasstest-ssh-dev-domain)
+

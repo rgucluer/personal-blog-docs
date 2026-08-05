@@ -1,0 +1,36 @@
+# Wipe & start over Payload CMS
+
+- ATTENTION, all data will be deleted.
+- Delete payload-blog service
+  - Stop payload-blog service
+  - Delete payload-blog service (Danger Zone)
+- Delete database service
+  - Stop mongodb-payload service
+  - Delete mongodb-payload service (Danger Zone)
+- Recreate database service [payload/create-mongodb.md](../payload/create-mongodb.md)
+- Recreate payload service
+  - Add Source to the Project [coolify/add-source-to-project](../coolify/add-source-to-project.md)
+  - Configure the Payload Project [coolify/configure-payload-dev](../coolify/configure-payload-dev.md)
+  - Deploy Payload Project
+    - VM -> Coolify -> Projects -> < project-name > -> < coolify-application-name >
+    - Advanced -> Force Deploy
+    - Check/Set service name in Traefik Dynamic configuration for payload service
+      - service value of payload-https route must be correctly set
+        - payload-abc...yz@docker
+      - Save
+- Restart Proxy - Traefik
+  - VM -> Coolify -> Servers -> < coolify-server-name > -> Restart Proxy
+- Check https://www.< dev-domain-name >
+  - Click "Visit the admin dashboard"
+    - Create a new Payload admin user
+      - Welcome to your dashboard!
+        - Click "Seed your database"
+          - Seeding with data
+            - Message: `Database seeded! You can now visit your website`
+              - OK, we are good.
+              - Click `visit your website`
+              - Homepage renders with images. 
+            - Message: "An error ocurred during seeding"
+              - Problem continues
+              - Not so good. ( Did not happen in my setup after applying the steps above )
+

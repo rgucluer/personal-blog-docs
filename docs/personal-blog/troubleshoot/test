@@ -1,0 +1,54 @@
+http:
+  middlewares:
+    authentication:
+      basicAuth:
+        realm: traefik-dashboard
+        users:
+          - 'traefikadmin:$2b$08$2gNJQLMcQPFCOVL4XBLNdumvO8fhz.q8P4ExD7aHEJBIiKtyUoo.6'
+    content-type:
+      contenttype: true
+    gzip:
+      compress: true
+    redirect-to-https:
+      redirectScheme:
+        scheme: https
+  routers:
+    ping-http:
+      entryPoints:
+        - http
+      middlewares:
+        - redirect-to-https
+      rule: 'Host(`traefik.devblogserver.iact.dev`)&&PathPrefix(`/ping`)'
+      service: noop@internal
+    ping-https:
+      entryPoints:
+        - https
+      middlewares:
+        - content-type
+      rule: 'Host(`traefik.devblogserver.iact.dev`)&&PathPrefix(`/ping`)'
+      service: ping@internal
+      tls:
+        certResolver: letsencrypt
+    traefik-dashboard-http:
+      entryPoints:
+        - http
+      middlewares:
+        - redirect-to-https
+      rule: 'Host(`traefik.devblogserver.iact.dev`)&&(PathPrefix(`/api`)||PathPrefix(`/dashboard`))'
+      service: noop@internal
+    traefik-dashboard-https:
+      entryPoints:
+        - https
+      middlewares:
+        - authentication
+        - content-type
+        - gzip
+      rule: 'Host(`traefik.devblogserver.iact.dev`)&&(PathPrefix(`/api`)||PathPrefix(`/dashboard`))'
+      service: api@internal
+      tls:
+        certResolver: letsencrypt
+        domains:
+          -
+            main: devblogserver.iact.dev
+            sans:
+              - '*.devblogserver.iact.dev'

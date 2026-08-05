@@ -1,32 +1,38 @@
 # Personal Blog
 
-Personal Blog is a modified version of Payload CMS Website Template.
+personal-blog is a modified version of Payload CMS Website Template. 
 
-## [Install Personal Blog Development Environment ](docs/personal-blog/install-personal-blog-dev.md)
+personal-blog-docs is the documentation on how to implement Payload CMS on a Coolify instance.
 
-## [Install Personal Blog Production Environment ](docs/personal-blog/install-personal-blog-production.md)
+## Development Environment [development](docs/personal-blog/development.md)
 
-## [Daily Operations - Development Environment](docs/personal-blog/daily-dev.md)
-
-## [Daily Operations - Production Environment](docs/personal-blog/daily-prod.md)
+## Production Environment [production](docs/personal-blog/production.md)
 
 ## LICENSE
-Copyright 2026 Recep GÜÇLÜER rgucluer@gmail.com
+Copyright 2026 Recep GÜÇLÜER `rgucluer@gmail.com`
 
-personal-blog-docs is [MIT licensed](LICENSE).
+personal-blog-docs is [MIT licensed](LICENSE.md).
 
-## Source of this documentation: 
-https://github.com/rgucluer/personal-blog-docs
+---
+
+Documentation: https://github.com/rgucluer/personal-blog-docs
+
+Modified Payload CMS website template: https://github.com/rgucluer/personal-blog
+
+---
 
 ## Thanks
-The following, do work together to make Personal Blog work
-- cpm-cms : https://github.com/rgucluer/cpm-cms
 - Payload CMS : https://github.com/payloadcms/payload
 - Next.js : https://github.com/vercel/next.js
 - React : https://github.com/react/react
+- Node : https://nodejs.org
+- pnpm : https://pnpm.io/
+- Corepack : https://corepack.org/
+- swc: https://swc.rs/
 - Linux Kernel : https://www.kernel.org/
 - Ubuntu : https://ubuntu.com/download/server
 - Debian : https://www.debian.org/
+- Pop OS : https://system76.com/pop
 - Docker : https://www.docker.com/
 - Coolify : https://github.com/coollabsio/coolify
 - Laravel : https://github.com/laravel/laravel
@@ -39,8 +45,10 @@ The following, do work together to make Personal Blog work
 - VSCodium: https://vscodium.com/
 - Meld: https://meldmerge.org/
 - HTML, CSS, Javascript, http, https, yaml
-- And all other software, languages, protocols, standards make the ones work in this list.
-- Thanks for the community
+
+And all other software, languages, protocols, and standards make the ones work in this list.
+
+Thanks to the community !
 
 ## Notice
 

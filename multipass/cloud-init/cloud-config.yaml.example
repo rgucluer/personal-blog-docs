@@ -13,8 +13,8 @@ ssh:
   emit_keys_to_console: false
 
 # Basic system setup
-hostname: devserver1
-fqdn: devserver1.example.com
+hostname: devblogserver
+fqdn: devblogserver.example.com
 
 disable_root: false
 
