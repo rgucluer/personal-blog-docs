@@ -1,35 +1,32 @@
 # Create a MongoDB using Coolify
 
-- Coolify UI -> Projects -> cpm-cms (production) 
+- Coolify UI -> Projects -> personal-blog (production) 
   - Resources
     - +Add Resource (or +New )
     - Databases
-      - Mongo DB 
-          - Configuration:
-            - Name: mongodb-payload
-            - Proxy
-              - Public Port: 27017
-            - Save
-          - Resource Limits
-            - Number of CPUs: 0.25
-            - CPU Weight: 256
-            - Limit Memory:
-              - Soft Memory Limit: 1g
-              - Swappiness: 1
-              - Maximum Memory Limit: 1g
-              - Maximum Swap Limit: 1g
-            - Save
-        - Start/Restart
-          - Close "Database Startup" form after "Database started." message
-          - Check for green Running (healthy) label
-          - Save
-        - Coolify UI -> Projects -> personal-blog (production) 
-          - mongodb-payload
-            - Configuration - General
-              - Check : Proxy: Make it publicly available
-                - Wait
-              - Save
-              - We will use Mongo URL (public) in later steps.
+      - Mongo DB
+        - Click Deploy
+          - Settings:
+            - General:
+              - Database details
+                - Name: mongodb-payload
+                - Public access
+                  - Access: Public through TCP proxy
+                  - Public port: 27017
+                - Save changes
+            - Resource Limits
+              - CPU
+                - CPU limit: 0.25
+                - CPU Weight: 256
+              - Memory:
+                - Memory reservation: 1g
+                - Memory Limit: 1g
+                - Maximum and Swap Limit: 1g
+                - Swappiness: 1
+              - Save changes
+          - Start/Restart
+            - Close "Database Startup" form after "Database started." message
+            - Check for (green) Running label on top
 
 ---
 
@@ -38,6 +35,8 @@
 ---
 
 ## Optional: Install MongoDB Compass (Debian based)
+
+On Developer PC
 
 https://www.mongodb.com/docs/compass/install/?operating-system=linux&package-type=.deb
 

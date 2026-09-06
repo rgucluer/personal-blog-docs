@@ -7,22 +7,8 @@ Permission denied (publickey).
 
 ## Add ssh keys to ssh agent and try again
 
-### Ubuntu
 ```bash
-ssh-add ~/.ssh/< vm-coolify-rootkey >
-```
-```bash
-ssh-add ~/.ssh/< vm-user-key >
-```
-
-### CachyOS
-```bash
-ssh-agent fish
-```
-Or, Change shell to bash
-
-```bash
-ssh-add ~/.ssh/< vm-coolify-rootkey >
+ssh-add ~/.ssh/< vm-root-key >
 ```
 ```bash
 ssh-add ~/.ssh/< vm-user-key >

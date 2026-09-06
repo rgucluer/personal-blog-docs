@@ -11,93 +11,64 @@ https://coolify.io/docs/knowledge-base/proxy/traefik/wildcard-certs
 
 ---
 
-### Ports should be opened for self hosting Coolify
-Open the following inbound ports in VM/VPS firewall
-```bash
-ICMP    ICMP  Any IPv4, Any IPv6
-22      TCP   Any IPv4, Any IPv6  (or custom SSH port)
-80      TCP   Any IPv4, Any IPv6  ( http )
-80      UDP   Any IPv4, Any IPv6  ( http )
-443     TCP   Any IPv4, Any IPv6  ( https )
-443     UDP   Any IPv4, Any IPv6  ( https )
-3000    TCP   Any IPv4, Any IPv6  ( Node )
-3000    UDP   Any IPv4, Any IPv6  ( Node )
-6001    TCP   Any IPv4, Any IPv6  ( Coolify )
-6002    TCP   Any IPv4, Any IPv6  ( Coolify )
-8000    TCP   Any IPv4, Any IPv6  ( Coolify )
-8000    UDP   Any IPv4, Any IPv6  ( Coolify )
-8080    TCP   Any IPv4, Any IPv6  ( Traefik )
-8080    UDP   Any IPv4, Any IPv6  ( Traefik )
-```
-
----
-
 ## Configuration
 
 ### Set Coolify Domain
 
 - Coolify Web UI -> Settings -> Configuration -> General
-  - Domain: `https://coolify.my-domain.com`
+  - URL: `https://coolify.my-domain.com`
   - Name: coolify-vps
+  - Redirect HTTP to HTTPS: Enabled
   - Instance Timezone: UTC
-  - Do not change Instance's Public IPv4
-  - Save
+    - Select your timezone
+  - Do not change Instance public IPv4
+  - Do not change Instance public IPv6
+
+### Set DNS Servers
+
+- Settings -> Configuration -> Advanced
+  - DNS Validation
+    - DNS Validation: Disabled
+  - Custom DNS Servers:
+    - Enter IPs of your domain's name servers
+  - API and MCP
+    - Allowed IPs for API Access
+      - < vps-ip-address >
+      - seperated with a comma
+    - API Access: Enabled
+  - DNS Validation
+    - DNS Validation: Enabled
+  - Interface and telemetry
+    - Navigation: SPA navigation
+
+---
 
 ### Setup General Settings for the Virtual Private Server
 - Coolify Web User Interface:
-  - Servers -> localhost -> Configuration -> General
-    - Name: < servername >  (initial value: localhost)
+  - Servers -> < vps-server-name > -> Settings -> General -> Connection
+    - Name: < vps-server-name >  (initial value: localhost)
       - server1
     - Wildcard Domain: `https://my-domain.com`
     - IP Address/Domain: host.docker.internal
-    - User: root
-    - Port: < vps-ssh-port >
-    - Save
-    - Validate server if needed.
+    - SSH user: root
+    - Port: < vps-ssh-port > ( default: 22 )
+    - Server timezone: Select your timezone
+    - Save changes
   - Restart Proxy
+    - Actions -> Restart Proxy
+      - Confirm ... Restart Proxy
   - Wait a few minutes, and close the "Proxy Startup Logs" form.
   - Refresh Page
 
 ### Setup Sentinel for the Virtual Private Server
 - Servers -> < servername > -> Sentinel
   - Coolify URL
-    - `http://coolify.my-domain.com`
-    - Sentinel Enabled (OK if Disable Sentinel buton is visible)
-  - Save
-
-### Setup Proxy for the Virtual Machine
-- Servers -> < servername > -> Proxy -> Configuration -> Advanced
-  - Override default request handler: 
-    - Unchecked
-  - Save
-  - Restart Proxy
-  - Wait a few minutes, and close the "Proxy Startup Logs" form.
-    - Or close the form if you see the "Successfull ..." message
+    - `https://coolify.my-domain.com`
+    - Sentinel Enabled
+    - Click Sync button if Sentinel is out of Sync
+  - Save Changes
 
 ---
-
-### Set Timezone
-
-List the timezones
-```bash
-timedatectl list-timezones
-```
-Navigate with up,down,PgUp,PgDown. Note or copy your selection. Press <kbd>q</kbd> to exit
-
-```bash
-EET
-Etc/GMT+3
-Etc/UTC
-Etc/Universal
-Europe/Istanbul
-US/Eastern
-```
-
-Set the following values in UI
-- Settings -> Configuration -> General -> Instance Timezone
-  - Save
-- Servers -> < servername > -> Configuration -> General -> Server Timezone  
-  - Save
 
 #### Prepare username & password for Traefik Basic Authentication
 
@@ -120,17 +91,24 @@ Enter a password you choose twice. This will save your traefik user name and enc
 
 ### Edit Traefik Configuration on VPS
 - Coolify Web User Interface:
-  - Servers -> < servername > -> Proxy -> Configuration -> Traefik (Coolify Proxy)
-  - Add or modify the following sections: 
-    - ( ..... represents the ommited sections )
-    - < variable-inside > Enter the value of the variable suits to your setup without the angle brackets .
-    - Get values from your DNS Provider for
-      - For Hetzner
-        - DNS: hetzner
-        - EMAIL: the e-mail used in DNS provider registration
-        - HETZNER_API_TOKEN
-      - For detailed information please read
-        - Lego Dns Provider list: https://go-acme.github.io/lego/dns/
+  - Servers -> < servername > -> Platform -> Proxy -> 
+    - Routing behavior
+      - Generated labels: Labels for the active proxy only
+      - Unknown requests: Return the default 503 response
+    - Traefik configuration
+      - Add or modify the following sections: 
+        - ( ..... represents the ommited sections )
+        - < variable-inside > Enter the value of the variable suits to your 
+        setup without the angle brackets .
+        - Remove section networks if exists
+        - Remove section services.traefik.networks if exists
+        - Get values from your DNS Provider for
+          - For Hetzner
+            - DNS: hetzner
+            - EMAIL: the e-mail used in DNS provider registration
+            - HETZNER_API_TOKEN
+          - For detailed information please read
+            - Lego Dns Provider list: https://go-acme.github.io/lego/dns/
 
 ```yaml
 name: coolify-proxy
@@ -175,8 +153,8 @@ services:
       - '--entrypoints.https.address=:443'
       - '--entrypoints.http.http.encodequerysemicolons=true'
       - '--entrypoints.https.http.encodequerysemicolons=true'
-      - '--entryPoints.http.http2.maxConcurrentStreams=250'
-      - '--entryPoints.https.http2.maxConcurrentStreams=250'
+      - '--entrypoints.http.http2.maxConcurrentStreams=250'
+      - '--entrypoints.https.http2.maxConcurrentStreams=250'
       - '--entrypoints.https.http3'
       - '--providers.docker=true'
       - '--providers.docker.exposedbydefault=false'
@@ -203,7 +181,8 @@ services:
       - coolify.managed=true
       - coolify.proxy=true
 ```  
-Save
+
+Save Changes
 
 Lego Dns Provider list: https://go-acme.github.io/lego/dns/
 
@@ -211,7 +190,7 @@ https://doc.traefik.io/traefik/expose/docker/
 
 ### Add Traefik Dynamic Configuration
 
-- Coolify UI -> Servers -> < servername > -> Proxy -> Dynamic Configurations
+- Coolify UI -> Servers -> < servername > -> Platform -> Proxy -> Dynamic Configurations
   - +Add
     - Filename: traefik-dashboard.yml
 ```yaml
@@ -224,19 +203,7 @@ http:
           - < traefik-user >:< traefik-enc-password >
     content-type:
       contenttype: true
-    gzip:
-      compress: true
-    redirect-to-https:
-      redirectScheme:
-        scheme: https
   routers:
-    ping-http:
-      entryPoints:
-        - http
-      middlewares:
-        - redirect-to-https
-      rule: 'Host(`traefik.my-domain.com`)&&PathPrefix(`/ping`)'
-      service: noop@internal
     ping-https:
       entryPoints:
         - https
@@ -246,13 +213,6 @@ http:
       service: ping@internal
       tls:
         certResolver: letsencrypt
-    traefik-dashboard-http:
-      entryPoints:
-        - http
-      middlewares:
-        - redirect-to-https
-      rule: 'Host(`traefik.my-domain.com`)&&(PathPrefix(`/api`)||PathPrefix(`/dashboard`))'
-      service: noop@internal
     traefik-dashboard-https:
       entryPoints:
         - https
@@ -272,57 +232,19 @@ http:
 ```
 - Save
 - Close Form
-- Restart Proxy
+- Actions -> Restart Proxy
   - Confirm ... -> Restart Proxy
   - Wait for the process to start ...
-    - Close Proxy Startup Logs form
+    - "Successfully started coolify-proxy."
+    - Close Proxy Startup Logs
+    - Refresh the page
 
 ---
-
-### Set DNS Servers
-
-- Settings -> Configuration -> Advanced
-  - DNS Settings
-    - DNS Validation: Uncheck
-  - Custom DNS Servers:
-    - Enter IPs of your domain's name servers
-  - API Settingss
-    - Allowed IPs for API Access
-      - < vps-ip >
-      - seperated with a comma
-    - API Access: Check
-  - Save
-
-- Settings -> Configuration -> Advanced
-  - DNS Settings
-    - DNS Validation: Check
-  - Save
-
-- Settings -> Configuration -> Advanced -> UI Settings
-  - SPA Navigation: Uncheck
-  - Save
-
-
----
-
-### Start Proxy or Restart Proxy
-
-- Coolify Web User Interface:
-  - Servers -> < servername > -> Start Proxy / Restart Proxy
-
-Modal Form - Proxy Status
-```bash
-.....
-Successfully started coolify-proxy.
-Successfully connected coolify-proxy to coolify network.
-```
-Close Form. If form is unresponsive, wait a few minutes, than than browser to https://coolify.devblogserver.< domain-name > .
 
 ### Check https://coolify.< domain-name >
 
 - Login
 - Change your password
-- Close the tab that is using the IP to connect Coolify.
 
 Check https://traefik.< domain-name >/ping
 
@@ -330,9 +252,13 @@ If it returns "OK", Traefik ping is OK .
 
 https://traefik.< domain-name >/dashboard/
 
-Asks for username and password. Enter username (traefikuser) & password you created during "Traefik Basic Authentication" step.
+Please enter the last `/` (forward-slash) to the URL, it is important.
 
-- You can close port 8000, 6001, 6002 on firewall after successful login via domain name.
+Asks for username and password. Enter username (< traefik-user >) & password you created during "Traefik Basic Authentication" step.
+
+- Close the tab that is using the IP to connect Coolify.
+
+- You can close ports 8000, 6001, 6002 on firewall after a successful login via domain name.
 
 ---
 

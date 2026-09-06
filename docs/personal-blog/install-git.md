@@ -16,4 +16,4 @@ git config --list
 
 ---
 
-### Continue with - Create & Add ssh keys  [multipass/install-multipass-create-vm.md](multipass/install-multipass-create-vm.md#create--add-ssh-keys-create-ssh-keys)
+### Continue with : Create & Add ssh keys  [multipass/install-multipass-create-vm.md](multipass/install-multipass-create-vm.md#create--add-ssh-keys-create-ssh-keys)

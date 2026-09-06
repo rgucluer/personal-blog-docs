@@ -10,7 +10,7 @@
   - New Project
     - Name: payload-project
     - Description: Payload template (website) for Coolify
-    - Continue
+    - Create project
 
 ## Create a MongoDB using Coolify [payload/create-mongodb-prod](create-mongodb-prod.md)
 
@@ -58,7 +58,7 @@ git push origin main
 
 Delete already merged dev branch
 ```bash
-git branch -d dev
+git branch -D dev
 ```
 
 Delete dev branch on remote
@@ -76,17 +76,14 @@ git push origin --delete dev
 - !ATTENTION! Deploy operation will DELETE all content. 
 - TODO: Implement Backup/Restore operations before/after deployment.
 - Coolify UI on VPS (https://coolify.< domain-name >)
-  - Projects : < project-name > -> Applications : < coolify-application-name >
+  - Projects : < coolify-project-name > -> Applications : < coolify-application-name >
     - Stop service if it is already running. 
     - Reload Compose File
-    - Save
-    - Advanced -> Force deploy (without cache)
+    - Actions -> Deploy (without cache)
   - Wait until the message "Container payload-... Started"
     - Click debug icon for more build information
-  - Check the green label above stays green "Running(healthy) for a couple of ten seconds...
-  - After deployment node will build Payload CMS. It takes time (3 - 4 minutes).
-
-## Set Traefik for the new application (VPS) [coolify/set-traefik-for-new-app-vps](../coolify/set-traefik-for-new-app-vps.md)
+  - Check the green label above, if it stays green "Running(healthy) for a couple of ten seconds...
+  - After deployment, node will build Payload CMS. It takes time (3 - 4 minutes).
 
 ## Check the Application
 - Check `https://www.< domain-name >`
@@ -120,10 +117,8 @@ git push origin --delete dev
 - https://coolify.io/docs/knowledge-base/proxy/traefik/redirects
 - https://doc.traefik.io/traefik/reference/routing-configuration/http/middlewares/redirectregex/
 - https://payloadcms.com/docs/production/deployment
-
----
-
-## TODO: Work on better content persistence
+- Payload Website template, https://github.com/payloadcms/payload/tree/main/templates/website .
+- https://payloadcms.com/docs/getting-started/what-is-payload
 
 ---
 
@@ -160,11 +155,3 @@ Location: /var/www/html/app/Traits/ExecuteRemoteCommand.php:242
 - [Apply troubleshoot/frozen-lockfile](../troubleshoot/frozen-lockfile.md) 
 - [Apply troubleshoot/vps-disk-space](../troubleshoot/vps-disk-space.md) 
 
-
-
----
-
-### References
-- Payload Website template, https://github.com/payloadcms/payload/tree/main/templates/website .
-- https://payloadcms.com/docs/getting-started/what-is-payload
-- https://payloadcms.com/docs/production/deployment

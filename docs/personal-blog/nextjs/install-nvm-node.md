@@ -9,7 +9,13 @@ On Controller PC
 
 https://nodejs.org/en/download
 
-Get Node.js v24.18.0(LTS) for Linux using nvm with pnpm
+Get Node.js 22 (LTS) for Linux using nvm with pnpm
+
+Select from select boxes,
+- Get Node.js: v22 LTS
+- for: Linux
+- using: nvm
+- with: npm
 
 On Developer PC
 
@@ -28,27 +34,23 @@ $ \. "$HOME/.nvm/nvm.sh"
 $ command -v nvm
 ```
 
-If the result is "nvm" then nvm installation is complete. 
-
-## Install Node
-
 ```bash
-$ nvm install v24.18.0
+nvm install 22
 ```
 
 ```bash
-$ nvm use v24.18.0
+$ nvm use 22
 ```
 
 ```bash
-$ nvm alias default v24.18.0
+$ nvm alias default 22
 ```
 
 ```bash
 $ node -v
 ```
 ```bash
-v24.18.0
+v22.23.2
 ```
 
 ## Install pnpm

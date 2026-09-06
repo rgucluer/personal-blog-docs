@@ -9,72 +9,79 @@ When you see these variables through the document , enter the values valid for y
   - dev-pc-local-ip: Developer PC local IP
   - dev-pc-global-ip: Global IP address that Developer PC connects to internet.
 
+- Domain information
+  - domain-name: my-domain.com
+    - The domain name registered to you. 
+    - fqdn.tld
+  - dev-domain-name: devblogserver.my-domain.com
+  - prod-domain-name: my-domain.com
+  - servername: 
+      vm: devblogserver
+      vps: server1
+
 - Payload App
-  - app-dir-name: personal-blog
-  - personal-blog-source: < workspace-full-path >/< app-dir-name >
-  - payload-app-full-path: < workspace-full-path >/< app-dir-name >
-  - personal-blog-docs-full-path: < workspace-full-path >/personal-blog-docs
+  - payload-app-directory: personal-blog
+  - payload-app-full-path: < workspace-full-path >/< payload-app-directory >
+    - example: /home/jack/workspace/cpm-cms
 
 - Virtual Machine
   - vm-name: vmblog
-  - vm-user-name : vm2user
+  - vm-user-name: vm2user
   - vm-user-key: vm2user-ssh-key
     - SSH key for < vm-user-name >
+  - vm-root-key: Virtual Machine ssh key for root user
   - vm-ssh-port: 22
   - virtual-m-ip: IP of Virtual Machine. Learn from the result of multipass list command.
-  - vm-server-name : 
-    - devblogserver
+  - vm-server-name: devblogserver
 
 - Virtual Private Server
   - vps-ip-address:
   - vps-server-name : server1 
-  - vps-root-key: root-ssh-key
-
-- domain-name: my-domain.com
-- dev-domain-name: devblogserver.my-domain.com
-- prod-domain-name: my-domain.com
-- servername: 
-    vm: devblogserver
-    vps: server1
+  - vps-root-key: Virtual Private Server ssh key for root user
+  - vps-ssh-port: 22
+  - vps-user-name
+  - vps-user-key: vps-user-ssh-key
 
 - Coolify
-  - vm-coolify-rootkey: SSH key for VM root user
-    - my-coolify-root-key
   - coolify-project-name:
     - personal-blog
-  - coolify-application-name:
+  - coolify-application-name
     - personal-blog
   - coolify-server-name
-    - < servername >
     - < vm-server-name >
     - < vps-server-name >
-  - Coolify Payload Service Name
-    - Combine Payload Coolify Resource Name , and Payload Coolify Resource UUID with a hyphen
-      - Click Details button in Configuration -> General section
-        - Conbine values under Resource
-        - < name >-< UUID >
-      - payload-< payload-container-uuid >
-
+    - Coolify Payload App Service Name
+      - Combine Payload Coolify docker compose service name , and Payload Coolify Resource UUID with a hyphen
+        - Click Details button in Configuration -> General section
+          - Get UUID
+          - < coolify-application-name >-< UUID >
+            - personal-blog-some25charsuuidstring1234
   - Databases
     - database-name: mongodb-payload
   - Traefik ( Coolify Proxy )
     - traefik-user : traefikuser
     - traefik-password
     - traefik-encrypted-password
+    - lego-email : E-mail registered for letsencrypt
+    - lego-service-provider-api-token
+      - Read your DNS Provider's documentation.
+    - lego-service-provider-env-var : HETZNER_API_TOKEN
+      - Look up for your DNS Provider's settings in https://go-acme.github.io/lego/dns/#dns-providers
+    - lego-service-provider-dns : hetzner
+      - Look up for your DNS Provider's settings in https://go-acme.github.io/lego/dns/#dns-providers
+    - traefik-ping-address : https://traefik.my-server.com/ping
 
 - GitHub
   - github-username: githubuser
-  - github-repo-name: cpm-cms
   - github-user-key: github-ssh-key
   - github-name-surname: John Doe
   - github-user-email
-  - git-repo-url : https://github.com/< github-username >/cpm-cms
+  - github-repo-name: personal-blog
+  - git-repo-url : https://github.com/< github-username >/personal-blog
   - github-app-name-vm: 
-    - cpm-cms ( Used in Virtual Machine)
+    - personal-blog-for-vm ( Used in Virtual Machine)
   - github-app-name-vps: 
-    - cpm-cms-vps ( Used in Virtual Private Server)
-    - payload-app-vps ( Used in Virtual Private Server)
+    - personal-blog-vps ( Used in Virtual Private Server)
 
-TODO: List all possible places for domain name entry
 
 

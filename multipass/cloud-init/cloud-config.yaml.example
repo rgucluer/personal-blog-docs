@@ -9,11 +9,14 @@ timezone: "Utc"
 no_ssh_fingerprints: false
 
 ssh:
-  allow_public_ssh_keys: true
   emit_keys_to_console: false
 
 # Basic system setup
+
+# < vm-server-name >
 hostname: devblogserver
+
+# < dev-domain-name >
 fqdn: devblogserver.example.com
 
 disable_root: false

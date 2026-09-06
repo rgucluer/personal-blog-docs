@@ -4,9 +4,9 @@ Following Coolify documentation https://coolify.io/docs/applications/ci-cd/githu
 
 Visit `https://coolify.< domain-name >`
 
-- Coolify Web UI -> Sources -> Add+
-  - New GitHub App
-    - Name: < github-app-name >  ( payload-cms-for-vps, cpm-cms, etc)
+- Coolify Web UI -> Sources -> New Source
+  - GitHub App
+    - Name: < github-app-name-vps >  ( payload-cms-for-vps, cpm-cms, etc)
     - Continue
     - There are two options:
       - Automated Installation
@@ -16,26 +16,30 @@ Visit `https://coolify.< domain-name >`
 
 ### Automated Installation
 
-- Automated Installation
-  - Selected endpoint
-    - Select from select box
-      - Select  https://coolify.< my-domain.com >
-    - Uncheck `Preview Deployments`
-    - Register Now
-      - Create GitHub App
-        - GitHub App name: < github-app-name > 
-        - Click `Create Github App for < github-username >`
-        - Confirm access ( GitHub Authentication )        
-          - Authenticate
-          - Click Install Repositories on GitHub
-          - Install `< github-app-name-vps >`
-            - Click: Only select repositories
-              - Select from "Select repositories"
-                - `< my-github-username >`/`< git-repo-name >`
-            - Click Install
-  - We are back in Coolify UI Sources - GitHub App Form -> 
-    - App Name: < github-app-name-vps >
-    - Save
+- Webhook endpoint: Use an instance endpoint
+- Instance endpoint: Use https://coolify.my-domain.com
+- Preview deployment access: Do not update pull requests
+- Register with GitHub
+  - Confirm access
+    - Authenticate
+  - Create GitHub App: 
+    - GitHub App name: < github-app-name-vps >
+      - The name must be unique across GitHub.
+      - personal-blog-vps
+  - Click Create GitHub App for < github-username >
+  - Allow browser if browser wants permission for this operation
+  - Click Install Repositories on GitHub
+  - Install `< github-app-name-vps >`
+    - Install on your personal account < github-username >:
+      - Click: Only select repositories
+        - Select from "Select repositories"
+          - `< my-github-username >`/`< git-repo-name >`
+      - Click Install
+- We are back in Coolify UI 
+  - Sources -> < github-app-name-vps >
+    - Settings -> General
+      - App Name: < github-app-name-vps >
+      - Save changes
 
 ### Continue with [Add Source to the Project (VPS)](../payload/publish-payload-cms-vps.md#add-source-to-the-project-vps-coolifyadd-source-to-project-vps)
 

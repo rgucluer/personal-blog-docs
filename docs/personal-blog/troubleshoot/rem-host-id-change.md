@@ -20,7 +20,7 @@ To list current line number in nano hit <kbd>CTRL</kbd> + <kbd>C</kbd>
 
 ### Method 3:
 
-Last resort (not recomended) ; remove all known hosts. 
+Last resort (not recommended) ; remove all known hosts
 
 ```bash
 rm ~/.ssh/known_hosts

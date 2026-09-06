@@ -48,7 +48,7 @@ users:
     homedir: /home/vm2user
     shell: /bin/bash
     lock_passwd: true
-    # Enter the public ssh key below. Copy value from ~/.ssh/< vm-coolify-rootkey >.pub 
+    # Enter the public ssh key below. Copy value from ~/.ssh/< vm-root-key >.pub 
     ssh_authorized_keys:
     - "ssh-ed25519 Enter_your_< vm-user-name >.pub_content_inside_quotes < vm-user-name >"
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
@@ -59,9 +59,9 @@ users:
     homedir: /root
     shell: /bin/bash
     lock_passwd: true
-    # Enter the public ssh key below. Copy value from ~/.ssh/< vm-coolify-rootkey >.pub
+    # Enter the public ssh key below. Copy value from ~/.ssh/< vm-root-key >.pub
     ssh_authorized_keys:
-    - "ssh-ed25519 Enter_your_< vm-coolify-rootkey >.pub_content_inside_quotes root"
+    - "ssh-ed25519 Enter_your_< vm-root-key >.pub_content_inside_quotes root"
 
 # https://cloudinit.readthedocs.io/en/latest/reference/modules.html#locale
 locale: false
@@ -102,7 +102,7 @@ cd < personal-blog-docs >/multipass/cloud-init
 ```bash
 multipass launch 24.04 --name vmblog --cpus 2 --disk 40G --memory 8G --cloud-init cloud-config.yaml
 ```
-This will take some time. Also may give an error, "launch failed: The following errors occurred:
+Set cpus, disk, memory according to your setup. Launch will take some time. Also may give an error, "launch failed: The following errors occurred:
 timed out waiting for initialization to complete", but still work.
 
 ```bash

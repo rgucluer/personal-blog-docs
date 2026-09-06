@@ -17,18 +17,6 @@
         - Validate & Add Token
         - Cloud provider token added successfully.
 
-- It may take some time(several minutes) to "Link to Hetzner Cloud" section to appear. Be patient. 
-
-- Coolify Web User Interface:
-  - Servers -> server1 -> Configuration -> General
-    - Link to Hetzner Cloud (If available)
-      - Hetzner Token
-        - Choose HETZNER_API_TOKEN
-        - Enter your Hetzner Server ID (Get your ID from Hetzner Console)
-          - Click Search by ID
-          - If a result appears, click "Link This Server"
-            - If not, wait a minute try again.
-
 ---
 
 ### Continue with: Configure Coolify - Setup Wildcard SSL Certificates with Traefik [coolify/configure-coolify-traefik-vps](../install-personal-blog-prod.md#configure-coolify---setup-wildcard-ssl-certificates-with-traefik-coolifyconfigure-coolify-traefik-vps)  

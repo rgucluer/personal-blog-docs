@@ -1,4 +1,4 @@
-# Daily Dev
+# Daily Operations of Development Environment
 
 After finishing initial development, and production environment setup, we use the development environment daily as follows.
 
@@ -9,7 +9,7 @@ ssh-add ~/.ssh/< vm-user-key >
 ```
 
 ```bash
-ssh-add ~/.ssh/< vm-coolify-rootkey >
+ssh-add ~/.ssh/< vm-root-key >
 ```
 
 ```bash
@@ -40,9 +40,9 @@ Changes for IP
 - /etc/hosts on Developer PC
 ```bash
 .....
-10.9.172.90 traefik.devblogserver.my-domain.com coolify.devblogserver.my-domain.com 
 10.9.172.90 www.devblogserver.my-domain.com
-10.9.172.90 devblogserver.my-domain.com
+10.9.172.90 traefik.devblogserver.my-domain.com coolify.devblogserver.my-domain.com 
+10.9.172.90 devblogserver.my-domain.com 
 10.9.172.90 devblogserver
 ```
 
@@ -104,49 +104,27 @@ Commit or revert any changes, and make status "nothing to commit, working tree c
 ---
 
 ```bash
-git branch --show-current
+$ git branch --show-current
 ```
 If it is not dev, switch to dev branch
 
 ```bash
-git switch dev
+$ git switch dev
 ```
 
 If dev branch does not exist, create one:
 ```bash
-git switch -c dev
+$ git switch -c dev
 ```
 
 ---
 
 ### Update Payload CMS version if a new version exists
 
-https://payloadcms.com/docs/getting-started/installation
+- Stop Payload service in VM
 
 ```bash
-$ pnpm update payload --latest
-```
-
-```bash
-$ pnpm update @payloadcms/* --latest  
-```
-
-```bash
-"@types/node@*" was updated to 22.19.9, not 26.1.2
-```
-
-Select a proper Node version , I choose v22.23.2   (Latest LTS: Jod)
-
-```bash
-$ nvm install v22.23.2
-```
-
-```bash
-$ nvm use v22.23.2
-```
-
-```bash
-$ nvm alias default v22.23.2
+$ cd < payload-app-full-path >
 ```
 
 ```bash
@@ -165,7 +143,6 @@ $ pnpm update payload --latest
 $ pnpm update @payloadcms/* --latest  
 ```
 
-
 ---
 
 ### Check version of the following
@@ -177,7 +154,8 @@ $ pnpm update @payloadcms/* --latest
   # .....
   ```
   - Node.js Stable version
-    - https://nodejs.org/en
+    - https://nodejs.org/en/download
+    - Select v22 LTS
     - v22.23.2
   - A suitable tag for NODE_VERSION
     - https://hub.docker.com/_/node
@@ -189,14 +167,14 @@ $ pnpm update @payloadcms/* --latest
 services:
   payload:
     # .....
-    image: custom-payload-website:3.87.0-build.21
+    image: custom-payload-website:3.88.0-build.2
 ```
 
 - Check version in package.json, bump up version if necessary.
 ```javascript
 {
   "name": "personal-blog",
-  "version": "0.2.13",
+  "version": "0.2.15",
 .....
 }
 ```
@@ -205,7 +183,7 @@ services:
 - Make changes to switch to Local Development Mode
   - Stop Payload service in VM
   - Mongo URL (public) must be enabled, and DATABASE_URL must be set in .env file.
-    - MongoDB service is running
+    - MongoDB service is running in VM
   - .env file content must be similar to VM Payload CMS Environment Variables
     - But set NEXT_PUBLIC_SERVER_URL=http://localhost:3000
   - next.config.ts  comment out output setting
@@ -213,15 +191,18 @@ services:
     // output: 'standalone',
     ```
 - Run server
-  ```bash
-  cd < payload-app-full-path >
-  ```
-  ```bash
-  pnpm install
-  ```
-  ```bash
-  pnpm dev
-  ```
+```bash
+$ cd < payload-app-full-path >
+```
+
+```bash
+$ pnpm install
+```
+
+```bash
+$ pnpm dev
+```
+
 - Open a web browser, navigate to http://localhost:3000
 - This renders the homepage of Payload with/without images.
 - Open http://localhost:3000/admin
@@ -239,17 +220,21 @@ services:
   ```typescript
   output: 'standalone',
   ```
-  ```bash
-  pnpm install
-  ```
-  ```bash
-  pnpm build
-  ```
-  - Copy < payload-app-full-path >/public into < payload-app-full-path >/.next/standalone
-  - Copy < payload-app-full-path >/.next/static into < payload-app-full-path >/.next/standalone/.next
-  ```bash
-  node .next/standalone/server.js
-  ```
+
+```bash
+$ pnpm install
+```
+
+```bash
+$ pnpm build
+```
+
+- Copy < payload-app-full-path >/public into < payload-app-full-path >/.next/standalone
+- Copy < payload-app-full-path >/.next/static into < payload-app-full-path >/.next/standalone/.next
+```bash
+node .next/standalone/server.js
+```
+
 - Open a web browser, navigate to http://localhost:3000
 - This renders the homepage of Payload with/without images.
 - Open http://localhost:3000/admin
@@ -275,30 +260,36 @@ git push origin dev
 ```
 
 #### Redeploy on VM
+- !ATTENTION! Deploy operation will delete all content. 
+- TODO: Implement Backup/Restore operations before/after deployment.
 - Coolify UI on VM (`https://coolify.devblogserver.my-domain.com`)
-  - Project -> < project-name > -> payload 
-    - Stop -> Check "Run Docker Clean ..." -> Continue -> Confirm
-      - Wait, see the red "Exited" label
-    - Click "Reload Compose file"
-    - Save
-    - Click Advanced -> Force Deploy
-    - Wait 3-4 minutes after deployment finishes.
-
+  - Project -> < coolify-project-name > -> personal-blog
+    - Actions -> Stop -> Check "Run Docker Clean ..." -> Continue -> Confirm
+      - Wait for `Exited` label
+    - Click "Reload compose"
+    - Actions -> Deploy (without cache)
+      - Check the green label above stays green "Running(healthy) for a couple of ten seconds...
+    - After deployment, node will build Payload CMS. It takes time (3 - 4 minutes).
     - Open https://www.< dev-domain-name >/admin
       - Login
       - Click Seed your database
         - We do this after a deployment
-        - TODO: Implement a backup/restore process to persist existing content between deployments.
         - Open https://www.< dev-domain-name >
         - Home page renders with images and default theme
 
 ### Update documentation
 - Update documentation about changes.
 
-Continue to [daily-prod](daily-prod.md) if everything is OK.
+---
 
-### TODO: Add tests
+### Back to [README](../../README.md)
 
 ---
 
-## Return back to README : [Readme](../../README.md)
+References:
+- https://payloadcms.com/
+- https://payloadcms.com/docs/getting-started/installation
+
+---
+
+### TODO: Add tests

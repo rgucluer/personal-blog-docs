@@ -1,10 +1,28 @@
 # Install & run Coolify on a Virtual Private Server
 
-Following [self hosted installation instructions](https://coolify.io/self-hosted/) for [Coolify](https://coolify.io/)
+### Ports should be opened for self hosting Coolify
+Open the following inbound ports in VPS firewall
 
-https://coolify.io/docs/get-started/installation#quick-installation-recommended
+```bash
+ICMP    ICMP  Any IPv4, Any IPv6
+22      TCP   Any IPv4, Any IPv6  (or custom SSH port)
+80      TCP   Any IPv4, Any IPv6  ( http )
+80      UDP   Any IPv4, Any IPv6  ( http )
+443     TCP   Any IPv4, Any IPv6  ( https )
+443     UDP   Any IPv4, Any IPv6  ( https )
+3000    TCP   Any IPv4, Any IPv6  ( Node )
+3000    UDP   Any IPv4, Any IPv6  ( Node )
+6001    TCP   Any IPv4, Any IPv6  ( Coolify )
+6002    TCP   Any IPv4, Any IPv6  ( Coolify )
+8000    TCP   Any IPv4, Any IPv6  ( Coolify )
+8000    UDP   Any IPv4, Any IPv6  ( Coolify )
+8080    TCP   Any IPv4, Any IPv6  ( Traefik )
+8080    UDP   Any IPv4, Any IPv6  ( Traefik )
+```
+
 
 ssh to the Virtual Private Server
+
 ```bash
 ssh root@< my-server.com > -p < ssh-port >
 ```
@@ -72,18 +90,20 @@ WARNING: It is highly recommended to backup your Environment variables file (/da
 [< Date     Time   >] Installation Complete
 ============================================================
 [< Date     Time   >] Coolify installation completed successfully
-[< Date     Time   >] Version: 4.1.2
+[< Date     Time   >] Version: 4.3.15
 [< Date     Time   >] Log file: /data/coolify/source/installation-< date >-< time >.log
 ```
 
 - Backup your /data/coolify/source/.env file on the VPS to a safe place
+- Open port 8000 on firewall
 - Open a web browser, and browse to `http://< vps-ip-address >:8000`
   - If a warning appears, Choose to continue to http site.
+  - If address starts with 'https', change it to 'http', and try again
   - Fill in the Coolify "Create an account" form, and create your Coolify root user.
 
 - After registration we see
   - Welcome to Coolify - Connect your first server and start deploying in minutes
-  - Click "Let's go!"
+  - Click "Continue"
   - Choose Server Type
     - Click This Machine
       - Wait a few seconds
@@ -94,3 +114,10 @@ WARNING: It is highly recommended to backup your Environment variables file (/da
 ---
 
 ### Continue with: Configure Coolify - Set Hetzner API Key if you use Hetzner [coolify/set_hetzner_api_key](../install-personal-blog-prod.md#configure-coolify---set-hetzner-api-key-if-you-use-hetzner-coolifyset_hetzner_api_key)  
+
+---
+
+### References:
+- Following [self hosted installation instructions](https://coolify.io/self-hosted/) for [Coolify](https://coolify.io/)
+
+- https://coolify.io/docs/get-started/installation#quick-installation-recommended

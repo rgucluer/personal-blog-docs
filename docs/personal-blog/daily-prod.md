@@ -57,25 +57,21 @@ git push origin main
 - !ATTENTION! Deploy operation will delete all content. 
 - TODO: Implement Backup/Restore operations before/after deployment.
 - Coolify UI on VPS ( https://coolify.< domain-name > ) 
-  - Projects -> < coolify-project-name > 
-    - Applications -> payload
-      - Stop -> 
-        - Confirm Application Stopping -> Continue 
-        - Confirm Application Stopping -> Confirm
-        - Wait for `Exited` label
-      - Configuration -> General -> Reload Compose File
-      - Save
-      - Deploy
-        - Check the green label above stays green "Running(healthy) for a couple of ten seconds...
-      - After deployment, node will build Payload CMS. It takes time (3 - 4 minutes).
-      - Open https://www.< prod-domain-name >/admin
-        - Login
-        - Click Seed your database
-          - We do this after a deployment
-          - Open https://www.< prod-domain-name >
-          - Home page renders with images and default theme
+  - Projects -> < coolify-project-name > -> personal-blog 
+    - Actions -> Stop -> Check "Run Docker Clean ..." -> Continue -> Confirm
+      - Wait for `Exited` label
+    - Click Reload compose
+    - Actions -> Deploy (without cache)
+      - Check the green label above stays green "Running(healthy) for a couple of ten seconds...
+    - After deployment, node will build Payload CMS. It takes time (3 - 4 minutes).
+    - Open https://www.< domain-name >/admin
+      - Login
+      - Click Seed your database
+        - We do this after a deployment
+        - Open https://www.< prod-domain-name >
+        - Home page renders with images and default theme
 
-## Sync dev branch to current state of main branch
+## Delete dev branch
 
 Delete already merged local dev branch
 ```bash
@@ -84,40 +80,14 @@ git branch -d dev
 
 To force delete we can use -D option
 
-Create dev branch
-
+Delete dev branch on remote
 ```bash
-git switch -c dev
+git push origin --delete dev
 ```
 
 We can continue to daily-dev
 
 ---
 
-### [Back to README](../../README.md)
+### Back to [README](../../README.md)
 
-
-
-
-
-## Changes specific to personal-blog:
-
-  - < github-user-key >
-- ip addresses
-  - < vps-ip-address >
-- Coolify
-  - < project-name >
-- < domain-name >
-
-- Add ssh keys to ssh agent 
-- ssh to VPS
-- Update apt packages
-- Merge dev branch to main branch
-- Commit and push your changes to Git repo
-- Stop & Deploy on Virtual Private Server
-- Sync dev branch to current state of main branch
-
-
----
-
-## Return back to README : [Readme](../../README.md#personal-blog)

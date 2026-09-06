@@ -4,6 +4,8 @@ Read documentation of your VPS Service Provider, and make root user able to logi
 
 ## [Create & Add ssh keys](create-ssh-keys-prod.md)
 
+- If you want to change the SSH port, wait after coolify initial setup.  Change ssh port after you create Coolify root user and connected to Coolify Dashboard.
+
 - ssh to VPS
 - Update apt packages
 
@@ -30,8 +32,10 @@ nano /etc/hosts
 ```
 
 ```bash
+127.0.1.1 www.< domain-name >
+127.0.1.1 traefik.< domain-name > coolify.< domain-name > 
+127.0.1.1 < servername >.< domain-name > < domain-name > < servername >
 127.0.0.1 localhost
-127.0.1.1 traefik.< domain-name > coolify.< domain-name > www.< domain-name > < prod-domain-name > < servername >.< domain-name > < domain-name > < servername >
 .....
 ```
 Save, and exit.
@@ -93,6 +97,8 @@ systemctl restart ssh
 ```
 
 TODO: It would be better if we can use Coolify with a regular user.
+
+Do not close current terminal, open a new terminal window, try, if succesfull then you can close .
 
 ---
 

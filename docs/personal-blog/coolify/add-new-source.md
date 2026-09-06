@@ -4,8 +4,8 @@ Following Coolify documentation https://coolify.io/docs/applications/ci-cd/githu
 
 Visit `https://coolify.< dev-domain-name >`
 
-- Coolify Web UI -> Sources -> Add+
-  - New GitHub App
+- Coolify Web UI -> Sources -> New Source
+  - GitHub App
     - Name: < github-app-name-vm >
     - Continue
     - There are two options:
@@ -16,25 +16,30 @@ Visit `https://coolify.< dev-domain-name >`
 
 ### Automated Installation
 
-- Selected Endpoint
-  - Select from select box
-    - Select https://coolify.< dev-domain-name >
-    - Uncheck `Preview Deployments`
-  - Register Now
+- Webhook endpoint: Use an instance endpoint
+- Instance endpoint: Use https://coolify.< dev-domain-name >
+- Preview deployment access: Do not update pull requests
+- Register with GitHub
+  - Confirm access
+    - Authenticate
   - Create GitHub App: 
     - GitHub App name: < github-app-name-vm >
-    - Click Create GitHub App for < github-username >
-    - Allow browser if browser wants permission for this operation
-    - Click Install Repositories on GitHub
-    - Install < github-app-name-vm >
-      - Authorization Request for GitHub - Install `< github-app-name-vm >`
-        - Click: Only select repositories
-          - Select from "Select repositories"
-            - `< github-username >`/`< git-repo-name >`
-        - Click Install
-    - We are back in Coolify UI Sources - GitHub App Form 
-      - App Name: < github-app-name-vm >
-      - Save
+      - The name must be unique across GitHub.
+      - personal-blog-for-vm
+  - Click Create GitHub App for < github-username >
+  - Allow browser if browser wants permission for this operation
+  - Click Install Repositories on GitHub
+  - Install < github-app-name-vm >
+    - Install on your personal account < github-username >:
+      - Click: Only select repositories
+        - Select from "Select repositories"
+          - `< github-username >`/`< git-repo-name >`
+      - Click Install
+  - We are back in Coolify UI 
+    - Sources -> < github-app-name-vm
+      - Settings -> General
+        - App Name: < github-app-name-vm >
+        - Save changes
 ---
 
 #### Continue with : Add Source to the Project [coolify/add-source-to-project](../payload/publish-payload-app.md#add-source-to-the-project-coolifyadd-source-to-project)

@@ -1,9 +1,9 @@
 # Wipe & start over Payload CMS
 
 - ATTENTION, all data will be deleted.
-- Delete payload-blog service
-  - Stop payload-blog service
-  - Delete payload-blog service (Danger Zone)
+- Delete personal-blog service
+  - Stop personal-blog service
+  - Delete personal-blog service (Danger Zone)
 - Delete database service
   - Stop mongodb-payload service
   - Delete mongodb-payload service (Danger Zone)
@@ -12,7 +12,7 @@
   - Add Source to the Project [coolify/add-source-to-project](../coolify/add-source-to-project.md)
   - Configure the Payload Project [coolify/configure-payload-dev](../coolify/configure-payload-dev.md)
   - Deploy Payload Project
-    - VM -> Coolify -> Projects -> < project-name > -> < coolify-application-name >
+    - VM -> Coolify -> Projects -> < coolify-project-name > -> < coolify-application-name >
     - Advanced -> Force Deploy
     - Check/Set service name in Traefik Dynamic configuration for payload service
       - service value of payload-https route must be correctly set

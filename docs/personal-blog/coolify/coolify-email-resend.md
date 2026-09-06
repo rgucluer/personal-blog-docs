@@ -1,7 +1,7 @@
 # Set e-mail with Resend
 
 - Configure Resend to send emails
-  - resend.com/emails
+  - resend.com Site 
     - Domains  
       - Add domain
         - Name: < domain-name >
@@ -26,24 +26,25 @@
           - Click copy icon, and store the API key in a safe place
           - After you store the API key to a safe place Click Done
 
-- Coolify Settings -> Transactional Email
+- Coolify Settings -> Instance -> Email
   - From Name: John Doe
   - From Address: info@< domain-name >
   - Resend
     - API Key: Enter the API Key we created at the previous step
     - Check Enabled
-    - Save
-  - Save
 
-- Click Send Test Email
-  - Enter Recipient address and hit Send Email
+- Click Send Test
+  - Enter a recipient e-mail address
+  - Click Send Test
+    - Error: Undefined array key "name"
 
-- Coolify UI -> Notifications -> Email
+- Coolify UI -> Manage -> Notifications -> Email
+  - Email delivery
+    - Email service: Use system-wide settings
   - Check: Use system wide (transactional) email settings
-  - Notification Settings:
+  - Notification Events:
     - Check notifications you want. 
       - (Don't forget!; Resend (free version) has limited resources.)
-    - Save
 
 ---
 

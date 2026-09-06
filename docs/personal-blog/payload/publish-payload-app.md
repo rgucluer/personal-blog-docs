@@ -7,11 +7,11 @@
 
 ## Coolify - Add a new Project
 
-- Coolify Web UI -> Projects -> Add
+- Coolify Web UI -> Projects -> New Project
   - New Project
     - Name: personal-blog
     - Description: Personal Blog made with Payload CMS
-    - Continue
+    - Create project
 
 ## Create a MongoDB using Coolify [payload/create-mongodb](create-mongodb.md)
 
@@ -36,17 +36,14 @@ We added the source (GitHub App) to Coolify Sources section in previous step. No
 - !ATTENTION! Deploy operation will delete all content. 
   - TODO: Implement Backup/Restore operations before/after deployment.
 - Coolify UI on VM (https://coolify.< dev-domain-name >)
-  - Projects : < project-name > -> Applications : < coolify-application-name >
+  - Projects : < coolify-project-name > -> Applications : < coolify-application-name >
     - Stop service if it is already running. 
     - Reload Compose File
-    - Save
-    - Advanced -> Force deploy (without cache)
+    - Actions -> Deploy (without cache)
   - Wait until the message "Container payload-... Started"
     - Click debug icon for more build information
   - Check the green label above, if it stays green "Running(healthy) for a couple of ten seconds...
   - After deployment, node will build Payload CMS. It takes time (3 - 4 minutes).
-
-## Set Traefik for the new application [coolify/set-traefik-for-new-app](../coolify/set-traefik-for-new-app.md)
 
 ## Check the Application
 - Check `https://www.< dev-domain-name >`
@@ -56,7 +53,7 @@ We added the source (GitHub App) to Coolify Sources section in previous step. No
 - Click `Visit the admin dashboard`
   - `https://www.< dev-domain-name >/admin`
   - Create your first user, or login
-  - Click "Seed your database", wait ...
+  - On Dashboard Click "Seed your database", wait ...
     - If successful we get the `Database seeded! You can now visit your website` message.
       - Or just a "done" prompt right of "Seed your database" link.
     - If process fails "An error occured while seeding", check for file permissions and ownership in payload service container. For more information read troubleshooting below.

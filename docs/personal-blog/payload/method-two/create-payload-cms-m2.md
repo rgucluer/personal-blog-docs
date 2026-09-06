@@ -9,11 +9,11 @@ $ cd < workspace-full-path >
 Check a directory does not exist with the same name as the repository name.
 
 ```bash
-$ git clone git@github.com:< github-username >/< github-repo-name >.git < app-dir-name >
+$ git clone git@github.com:< github-username >/< github-repo-name >.git < payload-app-directory >
 ```
 
 ```bash
-$ cd < workspace-full-path >/< app-dir-name >
+$ cd < workspace-full-path >/< payload-app-directory >
 ```
 
 ```bash
@@ -22,8 +22,8 @@ $ cp .env.example .env
 
 - Edit .env file
   - NODE_OPTIONS="--no-deprecation --max-old-space-size=2048"
-  - DATABASE_URL= Get value from Coolify -> Projects -> cpm-cms -> mongodb-payload
-    - Configuration -> General -> Network -> Mongo URL(public)
+  - DATABASE_URL= Get value from Coolify -> Projects -> < coolify-project-name > -> mongodb-payload
+    - Settings -> General -> Runtime and Network -> Mongo URL(public)
     - Reveal, and copy value, paste into .env file as value of DATABASE_URL
     - Change IP address to the IP of the VM
       - Get IP of VM from `multipass list` command

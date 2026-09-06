@@ -1,6 +1,6 @@
 # Set swap
 
-- Connect to the computer where you want ot set swap
+- Connect to the computer where you want to set swap
 
 ## Check swap files
 

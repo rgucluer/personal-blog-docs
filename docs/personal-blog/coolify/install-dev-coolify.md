@@ -1,5 +1,27 @@
 # Install & run Coolify on a Virtual Machine
 
+### Ports should be opened for self hosting Coolify
+Open the following inbound ports in VM firewall (if exists)
+
+```bash
+ICMP    ICMP  Any IPv4, Any IPv6
+22      TCP   Any IPv4, Any IPv6  (or custom SSH port)
+80      TCP   Any IPv4, Any IPv6  ( http )
+80      UDP   Any IPv4, Any IPv6  ( http )
+443     TCP   Any IPv4, Any IPv6  ( https )
+443     UDP   Any IPv4, Any IPv6  ( https )
+3000    TCP   Any IPv4, Any IPv6  ( Node )
+3000    UDP   Any IPv4, Any IPv6  ( Node )
+6001    TCP   Any IPv4, Any IPv6  ( Coolify )
+6002    TCP   Any IPv4, Any IPv6  ( Coolify )
+8000    TCP   Any IPv4, Any IPv6  ( Coolify )
+8000    UDP   Any IPv4, Any IPv6  ( Coolify )
+8080    TCP   Any IPv4, Any IPv6  ( Traefik )
+8080    UDP   Any IPv4, Any IPv6  ( Traefik )
+```
+
+In Virtual Machine these ports are already open.
+
 ssh to the virtual machine
 
 ```bash
@@ -68,11 +90,12 @@ WARNING: It is highly recommended to backup your Environment variables file (/da
 [< Date     Time   >] Installation Complete
 ============================================================
 [< Date     Time   >] Coolify installation completed successfully
-[< Date     Time   >] Version: 4.1.2
+[< Date     Time   >] Version: 4.3.14
 [< Date     Time   >] Log file: /data/coolify/source/installation-< date >-< time >.log
 ```
 
 - Backup your /data/coolify/source/.env file on VM to a safe place
+- Open ports 8000,
 - Open a web browser, and browse to `http://< virtual-m-ip >:8000`
   - If a warning appears, Choose to continue to http site.
   - Fill in the Coolify "Create an account" form, and create your Coolify root user.

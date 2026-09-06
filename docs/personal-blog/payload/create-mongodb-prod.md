@@ -5,31 +5,27 @@
     - +Add Resource (or +New )
     - Databases
       - Mongo DB 
-          - Configuration:
-            - Name: mongodb-payload
-            - Proxy
-              - Public Port: 27017
-            - Save
+        - Click Deploy
+          - Settings:
+            - General:
+              - Database details 
+                - Name: mongodb-payload
+                - Public access:
+                  - Access: Private
+                - Save changes
           - Resource Limits
-            - Number of CPUs: 0.25
-            - CPU Weight: 256
-            - Limit Memory:
-              - Soft Memory Limit: 1g
+            - CPU
+              - CPU limit: 0.25
+              - CPU Weight: 256
+            - Memory:
+              - Memory reservation: 1g
+              - Memory Limit: 1g
+              - Maximum and Swap Limit: 1g
               - Swappiness: 1
-              - Maximum Memory Limit: 1g
-              - Maximum Swap Limit: 1g
-            - Save
-        - Start/Restart
-          - Close "Database Startup" form after "Database started." message
-          - Check for green Running (healthy) label
-          - Save
-        - Coolify UI -> Projects -> payload-project (production) 
-          - mongodb-payload
-            - Configuration - General
-              - Check : Proxy: Make it publicly available
-                - Wait
-              - Save
-              - We will use Mongo URL (public) in later steps.
+            - Save changes
+          - Start/Restart
+            - Close "Database Startup" form after "Database started." message
+            - Check for (green) Running label on top
 
 ---
 
@@ -37,31 +33,3 @@
 
 ---
 
-## Optional: Install MongoDB Compass (Debian based)
-
-https://www.mongodb.com/docs/compass/install/?operating-system=linux&package-type=.deb
-
-```bash
-wget https://downloads.mongodb.com/compass/mongodb-compass_1.49.6_amd64.deb
-```
-
-```bash
-sudo dpkg -i mongodb-compass_1.49.6_amd64.deb
-```
-
-```bash
-mongodb-compass
-```
----
-
-### Create new connection
-- Start MongoDB service in Coolify
-- Click "Add new connection"
-- URI: Paste Mongo URL (public) here
-  - Delete IP address ,and enter IP address of Virtual Machine
-  - Save & Connect
-  - Disconnect
-
----
-
-### Continue with: Create a local copy of Payload CMS Website template

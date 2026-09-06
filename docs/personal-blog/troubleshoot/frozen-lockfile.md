@@ -1,4 +1,4 @@
-Stop payload service in VM if it is running
+Run Virtual Machine, database service must be runnning. Stop payload service in VM if it is running .
 
 On Dev PC
 ```bash
@@ -16,11 +16,8 @@ ARG NODE_VERSION=22.23.2-alpine
   - Check tags
 ```text
 v4.0.0-beta.0
-v3.87.0
+v3.88.0
 ```
-  - I use v3.87.0, last build was made with v3.86.0
-
-
 
 - Check version in package.json, bump up version if necessary.
   - https://github.com/rgucluer/personal-blog/blob/main/package.json
@@ -29,7 +26,7 @@ v3.87.0
 services:
   payload:
     # .....
-    image: custom-payload-website:3.87.0-build.1
+    image: custom-payload-website:3.88.0-build.1
 ```
 
 - Set output to standalone in next.config.ts .
@@ -129,12 +126,14 @@ or
 $ git push origin main
 ```
 
-- Coolify UI -> Projects -> < project-name > -> < coolify-application-name >
+- Coolify UI -> Projects -> < coolify-project-name > -> < coolify-application-name >
   - Stop application if it is running
   - Reload Compose File
   - Save
 
-- Coolify UI -> Projects -> < project-name > -> < coolify-application-name > -> Advanced Force Deploy (without cache)
+- Coolify UI -> Projects -> < coolify-project-name > -> < coolify-application-name > -> Redeploy
+or
+- Coolify UI -> Projects -> < coolify-project-name > -> < coolify-application-name > -> Advanced Force Deploy (without cache)
 
 - Wait 3-4 minutes after deployment finishes.
 
@@ -142,9 +141,10 @@ $ git push origin main
   - Login
   - Click Seed your database
     - We do this after a deployment
-    - TODO: Implement a backup/restore process to persist existing content between deployments.
     - Open https://www.< dev-domain-name >
     - Home page renders with images and default theme
+
+- TODO: Implement a backup/restore process to persist existing content between deployments.
 
 ### Troubleshoot
 

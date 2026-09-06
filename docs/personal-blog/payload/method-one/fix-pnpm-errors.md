@@ -1,7 +1,7 @@
 # Fix pnpm errors
 
 ```bash
-$ cd < personal-blog-source >
+$ cd < payload-app-full-path >
 ```
 
 ## pnpm 10 to pnpm 11 update

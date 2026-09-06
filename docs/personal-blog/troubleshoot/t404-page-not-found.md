@@ -11,12 +11,12 @@
       multipass list
       ```
 - Database service is running
-  - Cooliy Web UI -> Projects -> < project-name > -> Databases -> < database-name > -> Running (healthy)
+  - Cooliy Web UI -> Projects -> < coolify-project-name > -> Databases -> < database-name > -> Running (healthy)
 - Payload service is running
-  - Cooliy Web UI -> Projects -> < project-name > -> Applications -> < coolify-application-name > -> Running (healthy)
+  - Cooliy Web UI -> Projects -> < coolify-project-name > -> Applications -> < coolify-application-name > -> Running (healthy)
   - Logs
 - Check Domains for payload in Application General Settings
-  - Coolify Web UI -> Projects -> < project-name > -> Applications -> < coolify-application-name > -> 
+  - Coolify Web UI -> Projects -> < coolify-project-name > -> Applications -> < coolify-application-name > -> 
     - Configuration -> General -> Domains -> Domains for payload
       - Check the domain names
         - https://www.< dev-domain-name >,https://< dev-domain-name >
@@ -26,7 +26,7 @@
   - Coolify Web UI -> Servers -> `< vm-server-name >` -> Proxy -> Restart Proxy ... 
 
 - Check checkbox : Build Preserve Repository During Deployment 
-  - Coolify UI -> Projects -> < project-name > -> < coolify-application-name > -> Configuration -> General
+  - Coolify UI -> Projects -> < coolify-project-name > -> < coolify-application-name > -> Configuration -> General
     - Build
       - Check : Preserve Repository During Deployment
       - Save

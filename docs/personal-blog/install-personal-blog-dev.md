@@ -1,12 +1,14 @@
-# Install Development Environment 
+## Install Development Environment 
 
 Install Personal Blog on a Virtual Machine
 
-### Set swap [set_swap](set_swap.md)
+### Set swap [set-swap](set-swap.md)
 
 ### Install Multipass and Create a Virtual Machine [multipass/install-multipass-create-vm](multipass/install-multipass-create-vm.md)
 
 ### Install & run Coolify on a local Virtual Machine [coolify/install-dev-coolify](coolify/install-dev-coolify.md)
+
+### Configure Coolify - Set Hetzner API Key if you use Hetzner [coolify/set_hetzner_api_key](coolify/set_hetzner_api_key.md)  
 
 ### Configure Coolify , Setup Wildcard SSL Certificates with Traefik [coolify/configure-coolify-traefik](coolify/configure-coolify-traefik.md)
 

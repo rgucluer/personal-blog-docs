@@ -32,20 +32,20 @@ ssh-add ~/.ssh/< vm-user-key >
 
 ### create an ssh key for VM root user
 ```bash
-ssh-keygen -C root -f < vm-coolify-rootkey >
+ssh-keygen -C root -f < vm-root-key >
 ```
 
 It will ask for a passphraze, you can enter one, or skip it by pressing <kbd>ENTER</kbd> . ( You will need this passphraze later, keep it safe. )
 
 Make key pair readable/writable only by the user: 
 ```bash
-chmod u=wr-,g=---,o=--- ~/.ssh/< vm-coolify-rootkey >*
+chmod u=wr-,g=---,o=--- ~/.ssh/< vm-root-key >*
 ```
 Don't forget the "*" at the end.
 
 ### Add ssh key to ssh agent for Coolify VM root user
 ```bash
-ssh-add ~/.ssh/< vm-coolify-rootkey>
+ssh-add ~/.ssh/< vm-root-key >
 ```
 
 ---

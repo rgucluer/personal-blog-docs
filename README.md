@@ -50,6 +50,8 @@ And all other software, languages, protocols, and standards make the ones work i
 
 Thanks to the community !
 
+---
+
 ## Notice
 
 ### Trademarks Policy

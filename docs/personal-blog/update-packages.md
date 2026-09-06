@@ -12,5 +12,3 @@ Restart the computer if needed.
 ---
 
 ### Continue with - Install git [install-git](multipass/install-multipass-create-vm.md#install-git-install-git)
-
-
