@@ -51,11 +51,7 @@ When you see these variables through the document , enter the values valid for y
     - < vm-server-name >
     - < vps-server-name >
     - Coolify Payload App Service Name
-      - Combine Payload Coolify docker compose service name , and Payload Coolify Resource UUID with a hyphen
-        - Click Details button in Configuration -> General section
-          - Get UUID
-          - < coolify-application-name >-< UUID >
-            - personal-blog-some25charsuuidstring1234
+      - TODO: Enter how to find Payload App Service Name
   - Databases
     - database-name: mongodb-payload
   - Traefik ( Coolify Proxy )

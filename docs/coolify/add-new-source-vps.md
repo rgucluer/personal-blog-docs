@@ -6,7 +6,7 @@ Visit `https://coolify.< domain-name >`
 
 - Coolify Web UI -> Sources -> New Source
   - GitHub App
-    - Name: < github-app-name-vps >  ( payload-cms-for-vps, cpm-cms, etc)
+    - Name: < github-app-name-vps >  ( payload-cms-vps, cpm-cms, etc)
     - Continue
     - There are two options:
       - Automated Installation

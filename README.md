@@ -4,9 +4,9 @@ personal-blog is a modified version of Payload CMS Website Template.
 
 personal-blog-docs is the documentation on how to implement Payload CMS on a Coolify instance.
 
-## Development Environment [development](docs/personal-blog/development.md)
+## Development Environment [development](docs/development.md)
 
-## Production Environment [production](docs/personal-blog/production.md)
+## Production Environment [production](docs/production.md)
 
 ## LICENSE
 Copyright 2026 Recep GÜÇLÜER `rgucluer@gmail.com`

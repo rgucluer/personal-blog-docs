@@ -1,3 +1,5 @@
+### Manual Installation
+
 #### How to get GitHub App information
 
 - Open your GitHub Account
