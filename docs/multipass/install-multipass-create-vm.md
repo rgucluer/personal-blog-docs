@@ -30,7 +30,3 @@ A  *.my-domain.com  < vps-ip-address >
 
 ## Continue with: Install & run Coolify on a local Virtual Machine [coolify/install-dev-coolify](../install-personal-blog-dev.md#install--run-coolify-on-a-local-virtual-machine-coolifyinstall-dev-coolify)
 
-
----
-
-

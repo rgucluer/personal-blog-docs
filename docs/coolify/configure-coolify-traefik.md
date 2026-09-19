@@ -3,9 +3,9 @@
 https://coolify.io/docs/knowledge-base/proxy/traefik/wildcard-certs
 
 ## Requirements
-- You need to have a domain name and a DNS provider that supports wildcard subdomains.
-- You need to use [dnsChallenge](https://doc.traefik.io/traefik/https/acme/#dnschallenge) in Traefik to get wildcard certificates from Let's Encrypt.
-- You need to use one of the supported DNS providers.
+- Domain name and a DNS provider that supports wildcard subdomains.
+- Use [dnsChallenge](https://doc.traefik.io/traefik/https/acme/#dnschallenge) in Traefik to get wildcard certificates from Let's Encrypt.
+- Use one of the supported DNS providers.
   - Each provider needs environment variables to be set in the Traefik configuration.
   - You can find the required variables in the [official Traefik documentation](https://doc.traefik.io/traefik/https/acme/#providers) .
 
@@ -15,14 +15,24 @@ https://coolify.io/docs/knowledge-base/proxy/traefik/wildcard-certs
 
 ### Set Coolify Domain
 
-- Coolify Web UI -> Settings -> Configuration -> General
-  - URL: https://coolify.< dev-domain-name >
-  - Name: coolify-dev
-  - Redirect HTTP to HTTPS: Enabled
-  - Instance Timezone: UTC
-    - Select your timezone
-  - Do not change Instance public IPv4
-  - Do not change Instance public IPv6
+- Open Coolify Web UI
+  - URL: http://< virtual-m-ip >:8000
+    - Security Warning
+      - It gives error, because we did not finish setting up https
+      - Click `Continue to HTTP Site`
+
+- Coolify Web UI 
+  - Settings -> Configuration -> General
+    - URL: https://coolify.< dev-domain-name >
+    - Name: coolify-dev
+    - Redirect HTTP to HTTPS: Enabled
+    - Instance Timezone: UTC
+      - Select your timezone
+    - Network addresses
+      - Do not change Instance public IPv4
+      - Do not change Instance public IPv6
+    - Save changes
+
   - May give a DNS validation error, continue
   - Your IPv4 may not be reachable from public internet because of network structure.
 
@@ -33,10 +43,12 @@ https://coolify.io/docs/knowledge-base/proxy/traefik/wildcard-certs
     - DNS Validation: Disabled
   - Custom DNS Servers:
     - Enter IPs of your domain's name servers
+    - Save changes
   - API and MCP
     - Allowed IPs for API Access
       - `< vps-ip-address >`
       - `< virtual-m-ip >`
+      - `< dev-pc-global-ip >`
       - seperated with a comma
     - API Access: Enabled
   - DNS Validation
@@ -48,25 +60,23 @@ https://coolify.io/docs/knowledge-base/proxy/traefik/wildcard-certs
 
 ### Setup General Settings for the Virtual Machine
 - Coolify Web User Interface:
-  - dev-domain-name: devblogserver.my-domain.com
-  - vm-server-name: devblogserver
-  - Servers -> < vm-server-name > -> Settings -> General -> Connection
+  - Servers -> localhost -> Settings -> General -> Connection
     - Name: < vm-server-name > (initial value: localhost)
-    - Wildcard Domain: https://< dev-domain-name >
     - IP Address/Domain: host.docker.internal
     - SSH user: root
     - Port: < vm-ssh-port > ( default: 22 )
     - Server timezone: Select your timezone
+    - Wildcard Domain: https://< dev-domain-name >
     - Save changes
-  - Restart Proxy
-    - Actions -> Start/Restart Proxy
+  - Actions -> Start/Restart Proxy
+    - Confirm ... Restart Proxy
   - Wait a few minutes, and close the "Proxy Startup Logs" form.
   - Refresh Page
 
 ### Setup Sentinel for the Virtual Machine
-- Servers -> < servername > -> Sentinel
-  - Coolify URL
-    - http://coolify.< dev-domain-name >
+- Servers -> < servername > -> Platform -> Sentinel
+  - Connection -> Coolify URL
+    - https://coolify.< dev-domain-name >
     - Sentinel Enabled
     - Click Sync button if Sentinel is out of Sync
   - Save Changes
@@ -79,22 +89,20 @@ https://coolify.io/docs/knowledge-base/proxy/traefik/basic-auth#how-to-generate-
 
 On Developer PC
 ```bash
-cd ~
+$ cd ~
 ```
 
 ```bash
-sudo apt install apache2-utils
+$ sudo apt install apache2-utils
 ```
 
 ```bash
-htpasswd -c users.txt traefikuser
+$ htpasswd -c users.txt traefikuser
 ```
 
 Enter a password you choose twice. This will save your traefik user name and encrypted password to user.txt file. Open the file and copy the row you see. We will enter it below as  `Traefik Dynamic Configuration` value for `traefik.http.middlewares.traefik-basic-auth.basicauth.users` in single quotes .
 
 ### Edit Traefik Configuration on VM
-- dev-domain-name: devblogserver.my-domain.com
-- vm-server-name: devblogserver
 - Coolify Web User Interface:
   - Servers -> < vm-server-name > -> Platform -> Proxy -> 
     - Routing behavior
@@ -102,17 +110,17 @@ Enter a password you choose twice. This will save your traefik user name and enc
       - Unknown requests: Return the default 503 response
     - Traefik configuration
       - Add or modify the following sections: 
-        - ( ..... represents the ommited sections )
-        - < variable-inside > Enter the value of the variable suits to your setup without the angle brackets .
         - Remove section networks if exists
         - Remove section services.traefik.networks if exists
-        - Get values from your DNS Provider for
+        - ( ..... represents the ommited sections )
+        - < variable-inside > Enter the value of the variable suits to your setup without the angle brackets .
+        - Get values from your DNS Provider
+          - For detailed information please read
+            - Lego Dns Provider list: https://go-acme.github.io/lego/dns/
           - For Hetzner
             - DNS: hetzner
             - EMAIL: the e-mail used in DNS provider registration
             - HETZNER_API_TOKEN
-          - For detailed information please read
-            - Lego Dns Provider list: https://go-acme.github.io/lego/dns/
 
 ```yaml
 name: coolify-proxy
@@ -149,15 +157,15 @@ services:
     command:
       - '--global.checkNewVersion=true'
       - '--ping=true'
-      - '--ping.entryPoint=https'
+      - '--ping.entrypoint=https'
       - '--ping.terminatingStatusCode=204'
       - '--api.dashboard=true'
       - '--api.insecure=false'
       - '--entrypoints.http.address=:80'
       - '--entrypoints.https.address=:443'
       - '--entrypoints.http.http.encodequerysemicolons=true'
-      - '--entrypoints.https.http.encodequerysemicolons=true'
       - '--entrypoints.http.http2.maxConcurrentStreams=250'
+      - '--entrypoints.https.http.encodequerysemicolons=true'
       - '--entrypoints.https.http2.maxConcurrentStreams=250'
       - '--entrypoints.https.http3'
       - '--providers.docker=true'
@@ -235,6 +243,8 @@ http:
               - '*.< dev-domain-name >'
 ```    
 
+- Change basicAuth.users value with your traefik user and encrypted password
+- Change < dev-domain-name > with yours
 - Save
 - Close Form
 - Actions -> Restart Proxy
@@ -267,24 +277,35 @@ Asks for username and password. Enter username (< traefik-user >) & password you
 
 ---
 
-Later , after adding a App (Resource), read https://coolify.io/docs/knowledge-base/proxy/traefik/wildcard-certs#normal for setting up Traefik settings for your application.
-
----
-
 ### Continue with : Send e-mail with Resend [coolify/coolify-email-resend.md](../install-personal-blog-dev.md#send-e-mail-with-resend-coolifycoolify-email-resend)
 
 ---
 
+## References
+- https://coolify.io/docs/knowledge-base/server/firewall
 
 ## Troubleshooting
 
-### Error: ssh: connect to host < servername >.< domain-name > port 22: Connection refused
+### After changing Traefik settings get error:
+- "ERR_CONNECTION_REFUSED"
+  - Open port 8000 on VM/VPS
+    - Browse to http://<vps-ip-address>:8000
+      - Continue setup
+      - Change password after a successsfull login via domain name.
+  - Start Proxy
+- After successful login via domain name, you can close the ports
+  - 8000
+  - 6001
+  - 6002
+
+### Error: ssh: connect to host < dev-domain-name > port 22: Connection refused
 
 - Coolify Web User Interface:
   - Servers -> < servername > -> Configuration -> General -> General
     - IP Address/Domain: Change value as below
       - host.docker.internal
       - Save
+      
 ### Deploy command ends in error. Can not connect to MongoDB with Mongo URL (Internal)
   - If Dockerfile includes Node build commands, it wants to connect to the database, but it can not connect during build time. So moving build steps after image deployment gets rid of the error.
   - As a second option, you can enable Mongo URL (Public), and use it as DATABASE_URL

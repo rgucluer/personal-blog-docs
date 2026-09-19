@@ -1,18 +1,17 @@
 # Set e-mail with Resend
 
 - Configure Resend to send emails
-  - resend.com Site 
+  - resend.com/emails
     - Domains  
       - Add domain
-        - Name: < domain-name >
+        - Name: contact.< domain-name >
         - Region: Choose nearest to you
         - Add domain
-          - Read Fill in your DNS Records section, and set your DNS records according to the document.
+          - Read from Resend page, then go to your DNS management page, and set your DNS records according to the document. It can change according to DNS provider.
             - DKIM
-          - Enable Sending (Green Enabled)
+          - Enable Sending (Check)
             - SPF
             - DMARC
-          - If you enable receiving, also set the mx record for it.
 
 - Copy API Key from Resend
   - Resend -> API Keys:
@@ -20,7 +19,7 @@
     - Create API Key
       - Name: resendsend
       - Permission: Sending access
-      - Domain: Select your domain ( < domain-name > )
+      - Domain: Select your domain ( contact.< domain-name > )
       - Add
         - View API Key
           - Click copy icon, and store the API key in a safe place
@@ -28,20 +27,19 @@
 
 - Coolify Settings -> Instance -> Email
   - From Name: John Doe
-  - From Address: info@< domain-name >
+  - From Address: info@contact.< domain-name >
   - Resend
     - API Key: Enter the API Key we created at the previous step
-    - Check Enabled
-
-- Click Send Test
-  - Enter a recipient e-mail address
-  - Click Send Test
-    - Error: Undefined array key "name"
+    - Resend delivery: Enabled
+  - Save changes
+  - Resend
+    - Click `Send Test` button
+      - Enter Recipient address and hit Send Email
+        - "Success , Test Email sent." notification appears.
 
 - Coolify UI -> Manage -> Notifications -> Email
   - Email delivery
     - Email service: Use system-wide settings
-  - Check: Use system wide (transactional) email settings
   - Notification Events:
     - Check notifications you want. 
       - (Don't forget!; Resend (free version) has limited resources.)
@@ -49,3 +47,19 @@
 ---
 
 ### Continue with : Create a snapshot of the virtual machine [coolify/create-snapshot.md](../install-personal-blog-dev.md#create-a-snapshot-of-the-virtual-machine-coolifycreate-snapshot)
+
+---
+
+### References
+- https://resend.com/docs/dashboard/domains/manage-domains
+- https://resend.com/docs/dashboard/domains/manage-domains#what-are-spf-records
+- https://resend.com/docs/knowledge-base/hetzner
+
+---
+
+### Troubleshooting
+
+#### Error: Undefined array key "name"
+- Be sure the domain name definitions are correct and point to the same subdomain in Resend.
+  - API Key domain
+  - Domains Domain

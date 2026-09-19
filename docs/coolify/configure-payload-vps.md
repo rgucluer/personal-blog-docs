@@ -1,7 +1,7 @@
 ## Configure the Project
 
-- Coolify Web UI -> Projects -> payload-project ( production )
-  - Resource -> Application: personal-blog
+- Coolify Web UI -> Projects -> < coolify-project-name > ( production ) ( payload-project )
+  - Resource -> Application: < coolify-application-name > ( personal-blog )
     - Settings -> General
       - Click Reload Compose
       - Name: < coolify-application-name >
@@ -18,29 +18,35 @@
         - Check : Escape special characters in labels
       - Deployment lifecycle
         - Post-deployment: `/app/after-deploy.sh`
+        - Save changes
     - Settings -> Domains
-      - Add
+      - Add Domain
         - Add domain Form
-          - Service: personel-blog
+          - Service: personal-blog
           - Protocol: https
-          - Domain: < domain-name >
+          - Domain: < prod-domain-name >
+            - my-domain.com
+            - cpm-cms.my-domain.com
           - Save
-          - This will also add www.< dev-domain-name >
-        - personal-blog Direction : Redirect to www
+          - This will also add www.< prod-domain-name >
+      - Click settings for https://< prod-domain-name >
+        - www redirect: Redirect to www
+        - Save
     - Settings -> Environment Variables
       - Add the following variables
         - For every variable
           - Value type: Single line
           - Build time: Available during build
-          - Runtime: Available in the container
           - Interpolation: Interpolate $VARIABLES
-      - NODE_OPTIONS=--no-deprecation --max-old-space-size=2048
-      - HOSTNAME=0.0.0.0
+          - Runtime: Available in the container
+      - NODE_OPTIONS: --no-deprecation --max-old-space-size=2048
+      - HOSTNAME: 0.0.0.0
       - DATABASE_URL: Get value from mongodb-payload Mongo URL (internal), and paste as value. 
-      - PAYLOAD_SECRET: < copy value from local copy .env file to here >
-      - NEXT_PUBLIC_SERVER_URL : https://www.< domain-name >
-      - CRON_SECRET: < copy value from local copy .env file to here , or Enter_your_password_here >
-      - PREVIEW_SECRET: < copy value from local copy .env file to here , or Enter_your_password_here >
+      - PAYLOAD_SECRET: < copy value from local .env file to here >
+        - You can also enter a new secret. Changing the secret value after Payload application creation, seeding will result in an error. So save secret values in a safe place.
+      - NEXT_PUBLIC_SERVER_URL : `https://www.< prod-domain-name >`
+      - CRON_SECRET: < copy value from local .env file , or Enter_your_password_here >
+      - PREVIEW_SECRET: < copy value from local .env file , or Enter_your_password_here >
 
     - Settings -> Advanced
       - Build
@@ -51,7 +57,6 @@
         - Container naming: Generated name (rolling updates)
       - Deployment
         - Auto Deploy: Manual deployments only
-        - Preview Deployments: Disabled
       - Git
         - Submodules: Clone submodules
         - Git LFS: Enabled
@@ -64,6 +69,7 @@
         - Path prefixes: Strip prefixes
 
     - Deploy -> Git Source
+      - Connected source: < github-app-name-vps >  ( personal-blog-vps )
       - Repository:
         - < github-username >/< github-repo-name >
       - Branch: 
@@ -72,7 +78,10 @@
         - HEAD
       - Save
 
-    - Configuration -> Resource Limits
+    - Deploy -> Preview Deployments
+      - Disabled ( Showing `Enable Preview Deployments` button )
+
+    - Operations -> Resource Limits
       - CPU
         - CPU limit: 0.5
           - Number is a fractional number. 0.000 means no limit.
@@ -86,8 +95,9 @@
         - ( Set Memory values to according to your setup. )
 
     - Settings -> General -> Access -> Public access
-      - 2 configured domains -> (Gear) Manage Domains
-      - Check Domains for payload app
+      - https://< prod-domain-name >
+        - Click Manage Domains
+      - Check Domains for personal-blog
 
 ### Continue with: Deploy Application [payload/publish-payload-cms-vps](../payload/publish-payload-cms-vps.md#deploy--redeploy-payload-application)
 

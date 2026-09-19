@@ -1,4 +1,4 @@
-## Install Development Environment 
+## Install Development Environment
 
 Install Personal Blog on a Virtual Machine
 
@@ -20,5 +20,4 @@ Install Personal Blog on a Virtual Machine
 
 ---
 
-## Continue with : Production Environment [production](../../README.md#production-environment-production)
-
+## Continue with : Production Environment [production](../README.md#production-environment-production)

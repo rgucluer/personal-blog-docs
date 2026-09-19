@@ -34,8 +34,12 @@ $ \. "$HOME/.nvm/nvm.sh"
 $ command -v nvm
 ```
 
+If the result is "nvm" then nvm installation is complete. 
+
+## Install Node
+
 ```bash
-nvm install 22
+$ nvm install 22
 ```
 
 ```bash

@@ -38,7 +38,7 @@ We added the source (GitHub App) to Coolify Sources section in previous step. No
 - Coolify UI on VM (https://coolify.< dev-domain-name >)
   - Projects : < coolify-project-name > -> Applications : < coolify-application-name >
     - Stop service if it is already running. 
-    - Reload Compose File
+    - Reload Compose
     - Actions -> Deploy (without cache)
   - Wait until the message "Container payload-... Started"
     - Click debug icon for more build information
@@ -68,7 +68,7 @@ We added the source (GitHub App) to Coolify Sources section in previous step. No
 
 ## Continue with:
 
-### Production Environment [production](../../../README.md#production-environment-production)
+### Production Environment [production](../README.md#production-environment-production)
 
 ### Daily Development Operations [daily-dev](../development.md#daily-operations-of-development-environment-daily-dev)
 

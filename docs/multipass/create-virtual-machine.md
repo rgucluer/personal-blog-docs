@@ -15,6 +15,7 @@ timezone: "Utc"
 
 no_ssh_fingerprints: false
 
+# https://docs.cloud-init.io/en/latest/reference/yaml_examples/ssh.html
 ssh:
   emit_keys_to_console: false
 
@@ -38,7 +39,6 @@ groups:
 users:
   - default
     # < vm-user-name >
-    # vm2user
   - name: vm2user
     gecos: Development User
     # < vm-user-name >
@@ -48,7 +48,7 @@ users:
     homedir: /home/vm2user
     shell: /bin/bash
     lock_passwd: true
-    # Enter the public ssh key below. Copy value from ~/.ssh/< vm-root-key >.pub 
+    # Enter the public ssh key below. Copy value from ~/.ssh/< vm-user-key >.pub 
     ssh_authorized_keys:
     - "ssh-ed25519 Enter_your_< vm-user-name >.pub_content_inside_quotes < vm-user-name >"
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
@@ -94,19 +94,19 @@ Be sure to change values; fqdn, users.vmuser.ssh_authorized_keys, users.root.ssh
 ### Create the Virtual Machine
 
 ```bash
-cd < personal-blog-docs >/multipass/cloud-init
+$ cd < personal-blog-docs >/multipass/cloud-init
 ```
 
 < vm-name > : vmblog
 
 ```bash
-multipass launch 24.04 --name vmblog --cpus 2 --disk 40G --memory 8G --cloud-init cloud-config.yaml
+$ multipass launch 24.04 --name vmblog --cpus 2 --disk 40G --memory 8G --cloud-init cloud-config.yaml
 ```
 Set cpus, disk, memory according to your setup. Launch will take some time. Also may give an error, "launch failed: The following errors occurred:
 timed out waiting for initialization to complete", but still work.
 
 ```bash
-multipass list
+$ multipass list
 ```
 Note the IP address in the output ( IPv4 ) . We will use it in the following steps. It takes some time for VM to start. If VM state is "Restarting" then wait a few seconds, and run the command again.
 

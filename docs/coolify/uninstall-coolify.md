@@ -69,6 +69,6 @@ Coolify Successfully Uninstalled .
 
 ---
 
-## Return back to README : [Readme](../../../README.md)
+## Return back to README : [Readme](../../README.md)
 
 

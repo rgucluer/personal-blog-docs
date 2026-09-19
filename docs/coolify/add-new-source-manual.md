@@ -22,8 +22,8 @@
     - Account permissions
       - Email addresses: Read-only
   - Subscribe to events
-    - Check: Pull request
-    - Check: Push
+    - Checked: Pull request
+    - Checked: Push
   - Save changes
 
 - On GitHub Web - GitHub App Settings - General
@@ -31,7 +31,6 @@
     - If you have the current Client secret at hand, ready it for later use
     - If not , Click Generate a new client secret and save the secret for later use.
 
-- On GitHub Web - GitHub App Settings - General
   - Private Keys
     - If you have the current Private Key at hand, ready it for later use
     - If not , Click Generate a private and save the secret for later use.
@@ -40,7 +39,7 @@
   - Do not close GitHub App page, open a new webpage of Coolify and continue
   - Add the related private key to Coolify Keys & Tokens
   - Keys & Tokens
-    - Private Keys -> +Add
+    - Private Keys -> New Private Key
       - New Private Key Form
         - Name: < github-app-name-vm >
         - Private Key: Copy content of the private key(.pem file) on previous step and paste it here.
@@ -59,8 +58,7 @@
     - Edit URL, paste Source ID as last part of the URL
     - https://`< dev-domain-name >`/webhooks/source/github/install?source=`< Source ID >`
 
-- Coolify Web UI -> Sources -> GitHub App Page
-  - First Save, and refresh page, then continue
+- Coolify Web UI -> Sources -> < github-app-name-vm >
   - App Name: < github-app-name-vm >
   - HTML Url: https://github.com
   - API Url: https://api.github.com
@@ -76,14 +74,10 @@
     - You must save Client Secret while creating it. If you do not know the Client Secret, you can create a new one(On GitHub), and enter the new Client Secret to Coolify.
   - Webhook Secret: `< Enter GitHub Webhook Secret here >`
     - If you do not know the Webhook Secret, you can change the secret. But in that case you must update existing integrations.
+  - Select Private key
+    - We added the private key created on GitHub to Coolify Keys && Tokens section first, then select this key here 
   - Save
 
-- Coolify Web UI -> Sources -> GitHub App Page
-  - Set Private Key
-    - You must add the private key created on GitHub to Coolify Keys && Tokens section first, then select this key . 
-    - Private Key: Select from list: `< coolify-github-private-ssh-key-name >`
-      - If you can not see the key in select box, Save, refresh the page, again fill the values.
-  - Save
   - Click Sync Name
     - "GitHub App name and SSH key name synchronized successfully."
     - Error:

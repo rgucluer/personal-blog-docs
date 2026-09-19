@@ -2,11 +2,11 @@
 
 ## Open Coolify Web UI of Virtual Private Server
 
-- Visit `https://coolify.< domain-name >`
+- Visit `https://coolify.< prod-domain-name >`
 
 ## Coolify - Add a new Project
 
-- Coolify UI -> Projects -> Add
+- Coolify UI -> Projects
   - New Project
     - Name: payload-project
     - Description: Payload template (website) for Coolify
@@ -29,19 +29,19 @@ Commit all changes.
 Merge dev branch to main branch
 
 ```bash
-cd < workspace-full-path >/personal-blog
+$ cd < workspace-full-path >/personal-blog
 ```
 
 ```bash
-git branch
+$ git branch
 ```
 
 ```bash
-git checkout main
+$ git checkout main
 ```
 
 ```bash
-git merge --squash dev
+$ git merge --squash dev
 ```
 
 Fix any conflicts.
@@ -49,21 +49,21 @@ Fix any conflicts.
 Commit and push your changes to Git repo
 
 ```bash
-git commit
+$ git commit
 ```
 
 ```bash
-git push origin main
+$ git push origin main
 ```
 
 Delete already merged dev branch
 ```bash
-git branch -D dev
+$ git branch -D dev
 ```
 
 Delete dev branch on remote
 ```bash
-git push origin --delete dev
+$ git push origin --delete dev
 ```
 
 ## Coolify - Add a new Source ( Virtual Private Server ) [coolify/add-new-source-vps](../coolify/add-new-source-vps.md)
@@ -75,30 +75,31 @@ git push origin --delete dev
 ## Deploy / Redeploy Payload Application
 - !ATTENTION! Deploy operation will DELETE all content. 
 - TODO: Implement Backup/Restore operations before/after deployment.
-- Coolify UI on VPS (https://coolify.< domain-name >)
+- Coolify UI on VPS (https://coolify.< prod-domain-name >)
   - Projects : < coolify-project-name > -> Applications : < coolify-application-name >
+    - ( payload-project -> personal-blog )
     - Stop service if it is already running. 
-    - Reload Compose File
+    - Reload Compose
     - Actions -> Deploy (without cache)
   - Wait until the message "Container payload-... Started"
     - Click debug icon for more build information
   - Check the green label above, if it stays green "Running(healthy) for a couple of ten seconds...
-  - After deployment, node will build Payload CMS. It takes time (3 - 4 minutes).
+  - After deployment, pnpm will build Payload CMS. It takes time (3 - 4 minutes).
 
 ## Check the Application
-- Check `https://www.< domain-name >`
+- Check `https://www.< prod-domain-name >`
   - Works, good `:)` .
   - Not working, bad `:(`, try [troubleshooting](#troubleshooting).
 
 - Click `Visit the admin dashboard`
-  - `https://www.< domain-name >/admin`
+  - `https://www.< prod-domain-name >/admin`
   - Create your first user, or login
   - Click "Seed your database", wait ...
     - If successful we get the `Database seeded! You can now visit your website` message.
       - Or just a "done" prompt right of "Seed your database" link.
     - If process fails check for file permissions and ownership in payload service container. For more information read troubleshooting below.
 
-- Visit `https://www.< domain-name >`
+- Visit `https://www.< prod-domain-name >`
 
 - Page renders with images.
 
@@ -106,7 +107,7 @@ git push origin --delete dev
 
 ---
 
-### Back to [README](../../../README.md)
+### Back to [README](../../README.md)
 
 ### Daily Production Operations [production](../production.md#daily-operations-of-production-environment-daily-prod)
 
@@ -123,6 +124,9 @@ git push origin --delete dev
 ---
 
 ## Troubleshooting
+
+### Bad Gateway
+- Check/Apply steps in `Configure the Payload Project (VPS)`
 
 ### Container restarts
   [Click](../troubleshoot/container-restarts.md) for details

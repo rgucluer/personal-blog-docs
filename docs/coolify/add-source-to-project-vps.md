@@ -1,11 +1,11 @@
 ## Add Source to the Project
 
-- Coolify Web UI -> Projects -> payload-project ( production )
-  - Click +New resource
+- Coolify Web UI -> Projects -> < coolify-project-name > ( production )
+  - Click +New Resource
     - Applications
-      - Click Git Repository ( with GitHub App ) Deploy button
-        - Select a GitHub App: Click < github-app-name-vps > button
-          - Repository: < github-username >/< github-repo-name >
+      - Click `Git Repository ( with GitHub App )` Deploy button
+        - Select a GitHub App: Click < github-app-name-vps > button ( personal-blog-vps )
+          - Choose Repository: < github-username >/< github-repo-name >
           - Click Load Repository
             - Branch: main
             - Build Pack: Docker Compose

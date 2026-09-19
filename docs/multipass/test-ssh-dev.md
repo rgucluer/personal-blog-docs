@@ -1,7 +1,7 @@
 ## Test Virtual Machine ssh login
 
 ```bash
-ssh root@< virtual_machine_IP >
+$ ssh root@< virtual_machine_IP >
 ```
 
 Will ask "Are you sure you want to continue connecting (yes/no/[fingerprint])?" , write  "yes" and press <kbd>ENTER</kbd> .
@@ -16,15 +16,15 @@ Now, we are back in Controller PC .
 Now, stop - start the VM and try to ssh again.
 
 ```bash
-multipass stop vmblog
+$ multipass stop vmblog
 ```
 
 ```bash
-multipass start vmblog
+$ multipass start vmblog
 ```
 
 ```bash
-ssh root@< virtual_machine_IP >
+$ ssh root@< virtual_machine_IP >
 ```
 
 To exit from ssh session, press <kbd>CTRL</kbd>+<kbd>D</kbd>.
@@ -32,7 +32,7 @@ To exit from ssh session, press <kbd>CTRL</kbd>+<kbd>D</kbd>.
 Do the same thing for vm2user
 
 ```bash
-ssh vm2user@< virtual_machine_IP >
+$ ssh vm2user@< virtual_machine_IP >
 ```
 
 Now, we are in the Virtual Machine. To exit from ssh session, press <kbd>CTRL</kbd>+<kbd>D</kbd>.

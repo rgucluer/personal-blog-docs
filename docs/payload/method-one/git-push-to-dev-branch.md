@@ -1,14 +1,14 @@
 # git push to dev branch
 
 ```bash
-git checkout -b dev
+$ git checkout -b dev
 ```
 
 After we make changes to source code, and commit the changes we can push the code to the original repo on GitHub.
 
 
 ```bash
-git push origin dev
+$ git push origin dev
 ```
 
 ---

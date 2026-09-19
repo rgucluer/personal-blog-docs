@@ -15,6 +15,7 @@ When you see these variables through the document , enter the values valid for y
     - fqdn.tld
   - dev-domain-name: devblogserver.my-domain.com
   - prod-domain-name: my-domain.com
+    - You can use a subdomain: blog.my-domain.com
   - servername: 
       vm: devblogserver
       vps: server1

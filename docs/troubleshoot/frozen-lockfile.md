@@ -77,7 +77,7 @@ If got an Error:
   ● sharp
   ● unrs-resolver
   ```
-  Select all with <kbd>space</kbd>, <kbd>Enter</kbd> to continue
+  Select all with <kbd>a</kbd>, <kbd>Enter</kbd> to continue
 
   ```bash
   ? The next packages will now be built: esbuild, sharp, unrs-resolver.

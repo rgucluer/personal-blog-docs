@@ -8,10 +8,6 @@ $ cd < payload-app-full-path >
 Check values in .env file, if it fits your current setup.
 
 ```bash
-$ corepack enable
-```
-
-```bash
 $ corepack enable pnpm && corepack use pnpm@latest-11
 ```
 

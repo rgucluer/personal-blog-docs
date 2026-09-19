@@ -1,9 +1,9 @@
 ## Configure the Payload Project
 
 - Coolify Web UI -> Projects -> < coolify-project-name > ( production )
-  - Resource -> Application: < coolify-application-name >
+  - Resource -> < coolify-application-name >   Type: Application
     - Settings -> General
-      - Click Reload Compose
+      - Application details -> Click Reload Compose
       - Name: < coolify-application-name >
         - personal-blog
       - Description: Personal blog application made with Payload CMS
@@ -11,30 +11,43 @@
       - Build pipeline
         - Build strategy: Compose
         - Base Directory: /
-        - Check: Preserve Repository During Deployment
+        - Check: Preserve repository during deployment
         - Docker compose location : /docker-compose.yml
         - Save changes
       - Docker Compose
         - Check : Escape special characters in labels
       - Deployment lifecycle
         - Post-deployment: `/app/after-deploy.sh`
+        - Save changes
     - Settings -> Domains
-      - Add
+      - Add Domain
         - Add domain Form
           - Service: personel-blog
           - Protocol: https
           - Domain: < dev-domain-name >
+            - devblogserver.my-domain.com
           - Save
           - This will also add www.< dev-domain-name >
+        - Click settings button for https://< dev-domain-name >
+          - Search engine indexing: Noindex
+          - www redirect: Redirect to www
+          - Save
+          - Close form
+        - You can also disable indexing for the www one
+        - DNS status will give a mismatch error, ignore it (It will point to Developer PC IP)
     - Settings -> Environment Variables
       - Add the following variables
         - For every variable
-          - Value type: Single line
-          - Build time: Available during build
-          - Runtime: Available in the container
-          - Interpolation: Interpolate $VARIABLES
-      - NODE_OPTIONS=--no-deprecation --max-old-space-size=2048
-      - HOSTNAME=0.0.0.0
+          - Click Add
+          - New Environment Variable Form
+            - Name: Enter environment variable here
+            - Value type: Single line
+            - Build time: Available during build
+            - Runtime: Available in the container
+            - Interpolation: Interpolate $VARIABLES
+          - Click Add Variable
+      - NODE_OPTIONS: --no-deprecation --max-old-space-size=2048
+      - HOSTNAME: 0.0.0.0
       - DATABASE_URL: Get value from mongodb-payload Mongo URL (internal), and paste as value. 
       - PAYLOAD_SECRET: < copy value from local copy .env file to here >
       - NEXT_PUBLIC_SERVER_URL : https://www.< dev-domain-name >
@@ -50,7 +63,6 @@
         - Container naming: Generated name (rolling updates)
       - Deployment
         - Auto Deploy: Manual deployments only
-        - Preview Deployments: Disabled
       - Git
         - Submodules: Clone submodules
         - Git LFS: Enabled
@@ -69,7 +81,7 @@
         - dev
       - Commit SHA
         - HEAD
-      - Save
+      - Save changes
  
     - Operations -> Resource Limits
       - CPU
@@ -79,14 +91,10 @@
       - Memory
         - Memory reservation: 2g
         - Memory Limit: 2g
-        - Swappiness: 1
         - Memory and Swap Limit: 2g
+        - Swappiness: 1
         - Save changes
         - ( Set Memory values to according to your setup. )
-
-    - Settings -> General -> Access -> Public access
-      - 2 configured domains -> (Gear) Manage Domains
-      - Check Domains for payload app
 
 ---
 

@@ -1,7 +1,9 @@
 # Install & run Coolify on a Virtual Machine
 
 ### Ports should be opened for self hosting Coolify
-Open the following inbound ports in VM firewall (if exists)
+The the following inbound ports must be open in Virtual Machine. 
+They are already open in our setup. If you add a firewall to your Virtual Machine setup, 
+don't forget to open the ports.
 
 ```bash
 ICMP    ICMP  Any IPv4, Any IPv6
@@ -20,16 +22,16 @@ ICMP    ICMP  Any IPv4, Any IPv6
 8080    UDP   Any IPv4, Any IPv6  ( Traefik )
 ```
 
-In Virtual Machine these ports are already open.
+
 
 ssh to the virtual machine
 
 ```bash
-ssh root@< virtual-m-ip >
+$ ssh root@< virtual-m-ip >
 ```
 
 ```bash
-nano /etc/ssh/sshd_config
+$ nano /etc/ssh/sshd_config
 ```
 
 Ensure these settings are present, and NOT commented out:
@@ -43,7 +45,7 @@ Save & Exit
 
 Restart SSH Service
 ```bash
-sudo systemctl restart ssh
+$ systemctl restart ssh
 ```
 
 Update system packages, and restart if necassary.
@@ -51,14 +53,14 @@ Update system packages, and restart if necassary.
 Run Installation Command
 
 ```bash
-cd ~
+$ cd ~
 ```
 
 ```bash
-curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash
+$ curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash
 ```
 
-Wait the install process . 
+Wait the install process to finish . 
 
 Result:
 
@@ -90,21 +92,20 @@ WARNING: It is highly recommended to backup your Environment variables file (/da
 [< Date     Time   >] Installation Complete
 ============================================================
 [< Date     Time   >] Coolify installation completed successfully
-[< Date     Time   >] Version: 4.3.14
+[< Date     Time   >] Version: 4.3.21
 [< Date     Time   >] Log file: /data/coolify/source/installation-< date >-< time >.log
 ```
 
 - Backup your /data/coolify/source/.env file on VM to a safe place
-- Open ports 8000,
 - Open a web browser, and browse to `http://< virtual-m-ip >:8000`
-  - If a warning appears, Choose to continue to http site.
+  - If a warning appears, Choose to `Continue to HTTP site` .
   - Fill in the Coolify "Create an account" form, and create your Coolify root user.
 
 - After registration we see
   - Welcome to Coolify - Connect your first server and start deploying in minutes
-  - Click "Let's go!"
+  - Click "Continue"
   - Choose Server Type
-    -  This Machine 
+    - This Machine 
       - Wait a few seconds
   - Project Setup
     - Click Skip Setup ( Bottom of page, small letters. )

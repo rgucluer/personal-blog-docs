@@ -18,23 +18,23 @@ Install packages
 - ncdu
 
 ```bash
-sudo apt install lego nano curl python3-pip ncdu
+$ apt install lego nano curl python3-pip ncdu
 ```
 
 ## Set hostname on VPS
 
 ```bash
-hostnamectl set-hostname < server-name >
+$ hostnamectl set-hostname < server-name >
 ```
 
 ```bash
-nano /etc/hosts
+$ nano /etc/hosts
 ```
 
 ```bash
-127.0.1.1 www.< domain-name >
-127.0.1.1 traefik.< domain-name > coolify.< domain-name > 
-127.0.1.1 < servername >.< domain-name > < domain-name > < servername >
+127.0.1.1 www.< prod-domain-name >
+127.0.1.1 traefik.< prod-domain-name > coolify.< prod-domain-name >
+127.0.1.1 < servername >.< prod-domain-name > < prod-domain-name > < servername >
 127.0.0.1 localhost
 .....
 ```
@@ -42,7 +42,7 @@ Save, and exit.
 
 Then, restart the SSH service and the new hostname is set:
 ```bash
-systemctl restart ssh
+$ systemctl restart ssh
 ```
 
 Example: serv1.my-domain.com
@@ -54,12 +54,12 @@ https://linuxconfig.org/ubuntu-24-04-change-timezone
 
 Status
 ```bash
-timedatectl
+$ timedatectl
 ```
 
 Find your Timezone
 ```bash
-timedatectl list-timezones
+$ timedatectl list-timezones
 ```
 
 Use up/down arrow keys, PgUp/PgDown keys. Search for your timezone. Copy or note the string.
@@ -67,10 +67,12 @@ Use up/down arrow keys, PgUp/PgDown keys. Search for your timezone. Copy or note
 
 Set New Timezone
 ```bash
-timedatectl set-timezone < timezone >
+$ timedatectl set-timezone < timezone >
 ```
 
-Edit /etc/ssh/sshd_config. After you succesfully connected with public ssh keys, set PasswordAuthentication, and KbdInteractiveAuthentication to no. It will be even better if you limit users who can ssh with AllowUsers directive.
+Edit /etc/ssh/sshd_config. After you succesfully connected with public ssh keys, 
+set PasswordAuthentication, and KbdInteractiveAuthentication to no .
+It will be even better if you limit users who can ssh with AllowUsers directive.
 
 
 ```bash
@@ -92,14 +94,24 @@ X11Forwarding no
 # AllowUsers < vps-user-name > root
 ```
 
+Enter < vps-user-name > without angle brackets
+
 ```bash
-systemctl restart ssh
+$ systemctl restart ssh
 ```
 
 TODO: It would be better if we can use Coolify with a regular user.
 
-Do not close current terminal, open a new terminal window, try, if succesfull then you can close .
+Do not close current terminal, open a new terminal window, try to ssh in without entering your password, if succesfull then you can close the first terminal .
 
 ---
 
 ### Continue with: Set swap [set-swap](../install-personal-blog-prod.md#set-swap-set-swap)
+
+---
+### References
+- https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys
+
+- https://superuser.com/questions/8077/how-do-i-set-up-ssh-so-i-dont-have-to-type-my-password
+
+- https://askubuntu.com/questions/46930/how-can-i-set-up-password-less-ssh-login

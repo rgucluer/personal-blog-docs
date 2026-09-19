@@ -30,14 +30,17 @@ groups:
 # User setup configuration
 users:
   - default
+    # < vm-user-name >
   - name: vmuser
     gecos: Development User
+    # < vm-user-name >
     primary_group: vmuser
     groups: users, sudo
+    # /home/< vm-user-name >
     homedir: /home/vmuser
     shell: /bin/bash
     lock_passwd: true
-    # Enter the public ssh key below. Copy value from ~/.ssh/vmuserkey.pub 
+    # Enter the public ssh key below. Copy value from ~/.ssh/< vm-user-key >.pub 
     ssh_authorized_keys:
     - "ssh-ed25519 Enter_your_vmuserkey.pub_content_inside_quotes vmuser"
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
@@ -48,7 +51,7 @@ users:
     homedir: /root
     shell: /bin/bash
     lock_passwd: true
-    # Enter the public ssh key below. Copy value from ~/.ssh/vmuserkey.pub 
+    # Enter the public ssh key below. Copy value from ~/.ssh/< vm-root-key >.pub 
     ssh_authorized_keys:
     - "ssh-ed25519 Enter_your_rootkey.pub_content_inside_quotes root"
 

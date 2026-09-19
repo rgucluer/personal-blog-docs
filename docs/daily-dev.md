@@ -99,7 +99,7 @@ $ git status
 
 ---
 
-Commit or revert any changes, and make status "nothing to commit, working tree clean".
+Commit or revert, and push any changes on current branch, and make status "nothing to commit, working tree clean".
 
 ---
 
@@ -282,7 +282,7 @@ git push origin dev
 
 ---
 
-### Back to [README](../../README.md)
+### Back to [README](../README.md)
 
 ---
 

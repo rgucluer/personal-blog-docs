@@ -15,9 +15,9 @@ personal-blog-docs is [MIT licensed](LICENSE.md).
 
 ---
 
-Documentation: https://github.com/rgucluer/personal-blog-docs
+personal-blog : https://github.com/rgucluer/personal-blog
 
-Modified Payload CMS website template: https://github.com/rgucluer/personal-blog
+personal-blog-docs : https://github.com/rgucluer/personal-blog-docs
 
 ---
 

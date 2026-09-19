@@ -20,28 +20,10 @@ ICMP    ICMP  Any IPv4, Any IPv6
 8080    UDP   Any IPv4, Any IPv6  ( Traefik )
 ```
 
-
 ssh to the Virtual Private Server
 
 ```bash
-ssh root@< my-server.com > -p < ssh-port >
-```
-
-```bash
-nano /etc/ssh/sshd_config
-```
-
-Ensure these settings are present:
-```bash
-PermitRootLogin prohibit-password
-PubkeyAuthentication yes
-PasswordAuthentication no
-```
-Save & Exit
-
-Restart SSH Service
-```bash
-systemctl restart ssh
+$ ssh root@< prod-domain-name > -p < ssh-port >
 ```
 
 Update system packages, and restart if necassary.
@@ -49,11 +31,11 @@ Update system packages, and restart if necassary.
 Run Installation Command
 
 ```bash
-cd ~
+$ cd ~
 ```
 
 ```bash
-curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash
+$ curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash
 ```
 
 Wait the install process . 
@@ -90,12 +72,11 @@ WARNING: It is highly recommended to backup your Environment variables file (/da
 [< Date     Time   >] Installation Complete
 ============================================================
 [< Date     Time   >] Coolify installation completed successfully
-[< Date     Time   >] Version: 4.3.15
+[< Date     Time   >] Version: 4.3.21
 [< Date     Time   >] Log file: /data/coolify/source/installation-< date >-< time >.log
 ```
 
 - Backup your /data/coolify/source/.env file on the VPS to a safe place
-- Open port 8000 on firewall
 - Open a web browser, and browse to `http://< vps-ip-address >:8000`
   - If a warning appears, Choose to continue to http site.
   - If address starts with 'https', change it to 'http', and try again

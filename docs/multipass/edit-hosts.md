@@ -1,15 +1,14 @@
 ## Edit /etc/hosts file
 On Developer PC, add the following rows to the /etc/hosts file with a text editor. You must run the text editor with sudo privileges. virtual-m-ip is the IP we noted before (multipass list).
 ```bash
-sudo nano /etc/hosts
+$ sudo nano /etc/hosts
 ```
 Add the following rows to the file.
 ```txt
 .....
 < virtual-m-ip > www.< dev-domain-name >
 < virtual-m-ip > traefik.< dev-domain-name > coolify.< dev-domain-name >
-< virtual-m-ip > < dev-domain-name >
-< virtual-m-ip > < vm-server-name >
+< virtual-m-ip > < dev-domain-name > < vm-server-name >
 ```
 <kbd>CTRL</kbd> + <kbd>o</kbd> to Save.
 

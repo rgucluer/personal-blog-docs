@@ -38,7 +38,7 @@
     - If you have the current Private Key at hand, ready it for later use
     - If not , Click Generate a private and save the secret for later use.
 
-- Coolify Web UI - https://coolify.`< domain-name >`
+- Coolify Web UI - https://coolify.`< prod-domain-name >`
   - Do not close GitHub App page, open a new webpage of Coolify and continue
   - Add the related private key to Coolify Keys & Tokens
   - Keys & Tokens
@@ -61,12 +61,12 @@
     - Step 6 of Manual Installation: 
       - https://coolify.io/docs/applications/ci-cd/github/setup-app#manual-installation
       - The last section of the Coolify GitHub App Page URL
-        - https://coolify.`< domain-name >`/source/github/`< Source ID >`
+        - https://coolify.`< prod-domain-name >`/source/github/`< Source ID >`
 
 - On GitHub Web - GitHub App Settings - General
   - Set Post installation Setup URL
     - Edit URL, paste Source ID as last part of the URL
-    - https://`< domain-name >`/webhooks/source/github/install?source=`< Source ID >`
+    - https://`< prod-domain-name >`/webhooks/source/github/install?source=`< Source ID >`
 
 - Coolify Web UI -> Sources -> GitHub App Page
   - App Name: payload-app-123456

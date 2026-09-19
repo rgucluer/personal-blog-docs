@@ -7,6 +7,7 @@ Visit `https://coolify.< dev-domain-name >`
 - Coolify Web UI -> Sources -> New Source
   - GitHub App
     - Name: < github-app-name-vm >
+      - personal-blog-for-vm
     - Continue
     - There are two options:
       - Automated Installation
@@ -26,23 +27,23 @@ Visit `https://coolify.< dev-domain-name >`
     - GitHub App name: < github-app-name-vm >
       - The name must be unique across GitHub.
       - personal-blog-for-vm
-  - Click Create GitHub App for < github-username >
-  - Allow browser if browser wants permission for this operation
-  - Click Install Repositories on GitHub
-  - Install < github-app-name-vm >
+    - Complete GitHub Installation
+      -Warning: Repository access has not been installed yet. Complete this step before attaching the source to an application.
+  - Click `Install Repositories`
+  - Authorization Form - Install < github-app-name-vm >
     - Install on your personal account < github-username >:
-      - Click: Only select repositories
-        - Select from "Select repositories"
-          - `< github-username >`/`< git-repo-name >`
-      - Click Install
-  - We are back in Coolify UI 
-    - Sources -> < github-app-name-vm
+    - Click: Only select repositories
+      - Select from "Select repositories"
+        - `< github-username >`/`< github-repo-name >`
+    - Click Install
+  - We are back in Coolify UI
+    - Sources -> < github-app-name-vm >
       - Settings -> General
         - App Name: < github-app-name-vm >
-        - Save changes
+
 ---
 
-#### Continue with : Add Source to the Project [coolify/add-source-to-project](../payload/publish-payload-app.md#add-source-to-the-project-coolifyadd-source-to-project)
+### Continue with : Add Source to the Project [coolify/add-source-to-project](../payload/publish-payload-app.md#add-source-to-the-project-coolifyadd-source-to-project)
 
 ---
 
@@ -51,7 +52,7 @@ Visit `https://coolify.< dev-domain-name >`
 - Coolify Web UI -> Sources -> Add+
   - New GitHub App
     - Name: < github-app-name-vm >
-      - Example: personal-blog-vm
+      - personal-blog-for-vm
     - Continue
     - Manual Installation
       - Continue
@@ -59,7 +60,7 @@ Visit `https://coolify.< dev-domain-name >`
 
 ---
 
-#### Continue with : Add Source to the Project [coolify/add-source-to-project](../payload/publish-payload-app.md#add-source-to-the-project-coolifyadd-source-to-project)
+### Continue with : Add Source to the Project [coolify/add-source-to-project](../payload/publish-payload-app.md#add-source-to-the-project-coolifyadd-source-to-project)
 
 ---
 

@@ -56,7 +56,7 @@ git push origin main
 ## Stop & Deploy on Virtual Private Server
 - !ATTENTION! Deploy operation will delete all content. 
 - TODO: Implement Backup/Restore operations before/after deployment.
-- Coolify UI on VPS ( https://coolify.< domain-name > ) 
+- Coolify UI on VPS ( https://coolify.< prod-domain-name > ) 
   - Projects -> < coolify-project-name > -> personal-blog 
     - Actions -> Stop -> Check "Run Docker Clean ..." -> Continue -> Confirm
       - Wait for `Exited` label
@@ -64,7 +64,7 @@ git push origin main
     - Actions -> Deploy (without cache)
       - Check the green label above stays green "Running(healthy) for a couple of ten seconds...
     - After deployment, node will build Payload CMS. It takes time (3 - 4 minutes).
-    - Open https://www.< domain-name >/admin
+    - Open https://www.< prod-domain-name >/admin
       - Login
       - Click Seed your database
         - We do this after a deployment
@@ -89,5 +89,5 @@ We can continue to daily-dev
 
 ---
 
-### Back to [README](../../README.md)
+### Back to [README](../README.md)
 

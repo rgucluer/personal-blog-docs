@@ -1,11 +1,15 @@
 # Set swap
 
 - Connect to the computer where you want to set swap
+- When you see a $ sign in a terminal, it means "Enter the command after it".
+  - Done this to differentiate between 
+    - Result displaying rows
+    - Action defining rows
 
 ## Check swap files
 
 ```bash
-free -h
+$ free -h
 ```
 
 ```bash
@@ -17,7 +21,7 @@ Swap:             0B          0B          0B
 ## Check swappiness
 
 ```bash
-sudo swapon --show
+$ sudo swapon --show
 ```
 
 No Result, or similar to
@@ -45,11 +49,11 @@ NAME      TYPE       SIZE USED PRIO
 ## Creating a Swap File
 Create a swap file if one does not exist
 ```bash
-sudo fallocate -l 4G /swapfile
+$ fallocate -l 4G /swapfile
 ```
 
 ```bash
-ls -lh /swapfile
+$ ls -lh /swapfile
 ```
 
 ```bash
@@ -58,11 +62,11 @@ ls -lh /swapfile
 
 ## Enabling the Swap File
 ```bash
-chmod 600 /swapfile
+$ chmod 600 /swapfile
 ```
 
 ```bash
-ls -lh /swapfile
+$ ls -lh /swapfile
 ```
 
 ```bash
@@ -70,7 +74,7 @@ ls -lh /swapfile
 ```
 
 ```bash
-sudo mkswap /swapfile
+$ sudo mkswap /swapfile
 ```
 
 ```bash
@@ -79,11 +83,11 @@ no label, UUID=.....
 ```
 
 ```bash
-sudo swapon /swapfile
+$ sudo swapon /swapfile
 ```
 
 ```bash
-sudo swapon --show
+$ sudo swapon --show
 ```
 
 ```bash
@@ -92,7 +96,7 @@ NAME      TYPE SIZE USED PRIO
 ```
 
 ```bash
-free -h
+$ free -h
 ```
 
 ```bash
@@ -103,11 +107,11 @@ Swap:          4.0Gi          0B       4.0Gi
 
 ## Making the Swap File Permanent
 ```bash
-sudo cp /etc/fstab /etc/fstab.bak
+$ sudo cp /etc/fstab /etc/fstab.bak
 ```
 
 ```bash
-sudo echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+$ sudo echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 ```
 
 ## Tuning your Swap Settings
@@ -117,11 +121,11 @@ There are a few options that you can configure that will have an impact on your 
 ### Adjusting the Swappiness Property
 
 ```bash
-cat /proc/sys/vm/swappiness
+$ cat /proc/sys/vm/swappiness
 ```
 
 ```bash
-sudo sysctl vm.swappiness=1
+$ sudo sysctl vm.swappiness=1
 ```
 If you have low physical memory, do not set swappiness to a low value. 
 Also check swap status on Virtual Machine, and Virtual Private Server. 
@@ -133,7 +137,7 @@ Also check swap status on Virtual Machine, and Virtual Private Server.
 
 ---
 
-## For production environment continue with: 
+## For production environment continue with:
 ### Install & run Coolify on a Virtual Private Server [coolify/install-prod-coolify](install-personal-blog-prod.md#install--run-coolify-on-a-virtual-private-server-coolifyinstall-prod-coolify)
 
 ---

@@ -23,7 +23,7 @@ $ cp .env.example .env
 - Edit .env file
   - NODE_OPTIONS="--no-deprecation --max-old-space-size=2048"
   - DATABASE_URL= Get value from Coolify -> Projects -> < coolify-project-name > -> mongodb-payload
-    - Settings -> General -> Runtime and Network -> Mongo URL(public)
+    - Configuration -> General -> Network -> Mongo URL(public)
     - Reveal, and copy value, paste into .env file as value of DATABASE_URL
     - Change IP address to the IP of the VM
       - Get IP of VM from `multipass list` command
