@@ -18,6 +18,12 @@ Install Personal Blog on a Virtual Machine
 
 ### Create a Payload CMS Application from a private git repository [payload/publish-payload-app](payload/publish-payload-app.md)
 
+### Setup e-mail provider [payload/set-email](payload/set-email.md)
+
+### TODO: Add persistent storage
+
+### TODO: Setup a logging solution
+
 ---
 
 ## Continue with : Production Environment [production](../README.md#production-environment-production)

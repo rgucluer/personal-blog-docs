@@ -23,7 +23,7 @@ When you see these variables through the document , enter the values valid for y
 - Payload App
   - payload-app-directory: personal-blog
   - payload-app-full-path: < workspace-full-path >/< payload-app-directory >
-    - example: /home/jack/workspace/cpm-cms
+    - example: /home/jack/workspace/personal-blog
 
 - Virtual Machine
   - vm-name: vmblog

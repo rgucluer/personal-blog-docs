@@ -167,14 +167,14 @@ $ pnpm update @payloadcms/* --latest
 services:
   payload:
     # .....
-    image: custom-payload-website:3.88.0-build.2
+    image: custom-payload-website:3.90.2-build.3
 ```
 
 - Check version in package.json, bump up version if necessary.
 ```javascript
 {
   "name": "personal-blog",
-  "version": "0.2.15",
+  "version": "0.2.18",
 .....
 }
 ```

@@ -15,8 +15,7 @@ ARG NODE_VERSION=22.23.2-alpine
 - Check Payload CMS https://github.com/payloadcms/payload
   - Check tags
 ```text
-v4.0.0-beta.0
-v3.88.0
+v3.90.2
 ```
 
 - Check version in package.json, bump up version if necessary.
@@ -26,7 +25,7 @@ v3.88.0
 services:
   payload:
     # .....
-    image: custom-payload-website:3.88.0-build.1
+    image: custom-payload-website:3.90.2-build.3
 ```
 
 - Set output to standalone in next.config.ts .
