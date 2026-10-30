@@ -38,7 +38,7 @@ $ cd ~
 $ curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash
 ```
 
-Wait the install process . 
+Wait the install process to finish . 
 
 Result:
 
@@ -72,7 +72,7 @@ WARNING: It is highly recommended to backup your Environment variables file (/da
 [< Date     Time   >] Installation Complete
 ============================================================
 [< Date     Time   >] Coolify installation completed successfully
-[< Date     Time   >] Version: 4.3.21
+[< Date     Time   >] Version: 4.5.3
 [< Date     Time   >] Log file: /data/coolify/source/installation-< date >-< time >.log
 ```
 

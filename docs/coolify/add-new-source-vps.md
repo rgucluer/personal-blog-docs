@@ -4,15 +4,16 @@ Following Coolify documentation https://coolify.io/docs/applications/ci-cd/githu
 
 Visit `https://coolify.< prod-domain-name >`
 
-- Coolify Web UI -> Sources -> New Source
-  - GitHub App
-    - Name: < github-app-name-vps >  ( payload-cms-vps, etc)
-    - Continue
-    - There are two options:
-      - Automated Installation
-        - Use this for creating a new GitHub App for your source repository
-      - [Manual Installation](#manual-installation)
-        - If GitHub App already exists, you can add it to Coolify with Manual Installation.
+- Coolify Web UI -> Infrastructure -> Integrations
+  - Sources 
+    - New Source -> GitHub App
+      - Name: < github-app-name-vps >  ( payload-cms-vps, etc)
+      - Continue
+      - There are two options:
+        - Automated Installation
+          - Use this for creating a new GitHub App for your source repository
+        - [Manual Installation](#manual-installation)
+          - If GitHub App already exists, you can add it to Coolify with Manual Installation.
 
 ### Automated Installation
 

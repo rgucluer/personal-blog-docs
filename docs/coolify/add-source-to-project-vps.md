@@ -14,9 +14,10 @@
               - ATTENTION : File extension is .yml not .yaml. Please check & edit.
             - Continue
             - If successful, this loads docker-compose.yml, opens configuration menu.
-            - Set Name: < coolify-application-name >
-              - personal-blog
-            - Save changes
+              - Application details
+                - Set Name: < coolify-application-name >
+                  - personal-blog
+                - Save changes
 
 ### Continue with : Configure the Payload Project [coolify/configure-payload-vps](../payload/publish-payload-cms-vps.md#configure-the-payload-project-vps-coolifyconfigure-payload-vps)
 

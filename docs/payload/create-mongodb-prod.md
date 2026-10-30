@@ -1,14 +1,12 @@
 # Create a MongoDB using Coolify
 
 - Coolify UI -> Projects -> payload-project (production) 
-  - +Add Resource (or +New )
+  - +New Resource
   - Databases
     - Mongo DB 
       - Click Deploy
-        - Settings:
+        - Database details:
           - Name: mongodb-payload
-          - Public access:
-            - Access: Private
           - Save changes
         - Resource Limits
           - CPU

@@ -2,8 +2,7 @@
 
 ### Ports should be opened for self hosting Coolify
 The the following inbound ports must be open in Virtual Machine. 
-They are already open in our setup. If you add a firewall to your Virtual Machine setup, 
-don't forget to open the ports.
+They are already open in our setup. If you add a firewall to your Virtual Machine setup, don't forget to open the ports.
 
 ```bash
 ICMP    ICMP  Any IPv4, Any IPv6
@@ -22,9 +21,7 @@ ICMP    ICMP  Any IPv4, Any IPv6
 8080    UDP   Any IPv4, Any IPv6  ( Traefik )
 ```
 
-
-
-ssh to the virtual machine
+ssh to the Virtual Machine
 
 ```bash
 $ ssh root@< virtual-m-ip >

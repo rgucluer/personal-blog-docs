@@ -198,3 +198,7 @@ node server.js
 ---
 
 ### Continue with: Install npm packages & build the project [payload/method-one/install-npm-packs-build](create-payload-cms-m1#install-npm-packages--build-the-project-nextjsinstall-npm-packs-build)
+
+---
+### Current development on Writers Collection
+- Writers Collection [payload/add-writers](../add-writers.md)

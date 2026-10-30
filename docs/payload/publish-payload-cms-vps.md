@@ -9,7 +9,7 @@
 - Coolify UI -> Projects
   - New Project
     - Name: payload-project
-    - Description: Payload template (website) for Coolify
+    - Description: Personal Blog made with Payload CMS and Coolify
     - Create project
 
 ## Create a MongoDB using Coolify [payload/create-mongodb-prod](create-mongodb-prod.md)
@@ -24,7 +24,15 @@ https://git-scm.com/cheat-sheet
 
 On Developer PC
 
-Commit all changes.
+Commit all changes. Working tree must be clean.
+```bash
+$ git status
+```
+
+```bash
+On branch dev
+nothing to commit, working tree clean
+```
 
 Merge dev branch to main branch
 
@@ -74,7 +82,7 @@ $ git push origin --delete dev
 
 ## Deploy / Redeploy Payload Application
 - !ATTENTION! Deploy operation will DELETE all content. 
-- TODO: Implement Backup/Restore operations before/after deployment.
+  - TODO: Implement Backup/Restore operations before/after deployment.
 - Coolify UI on VPS (https://coolify.< prod-domain-name >)
   - Projects : < coolify-project-name > -> Applications : < coolify-application-name >
     - ( payload-project -> personal-blog )
@@ -102,6 +110,8 @@ $ git push origin --delete dev
 - Visit `https://www.< prod-domain-name >`
 
 - Page renders with images.
+
+- Delete Demo User or change it's login information.
 
 - Learn more ... [https://payloadcms.com/docs/getting-started/what-is-payload](https://payloadcms.com/docs/getting-started/what-is-payload)
 

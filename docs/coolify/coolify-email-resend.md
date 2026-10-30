@@ -25,7 +25,7 @@
           - Click copy icon, and store the API key in a safe place
           - After you store the API key to a safe place Click Done
 
-- Coolify Settings -> Instance -> Email
+- Coolify Settings -> Email
   - From Name: John Doe
   - From Address: info@contact.< domain-name >
   - Resend
@@ -46,7 +46,15 @@
 
 ---
 
+For Development Installation:
+
 ### Continue with : Create a snapshot of the virtual machine [coolify/create-snapshot.md](../install-personal-blog-dev.md#create-a-snapshot-of-the-virtual-machine-coolifycreate-snapshot)
+
+---
+
+For Production Installation:
+
+### Create a Payload CMS Application from a private git repository [payload/publish-payload-cms-vps](../payload/publish-payload-cms-vps.md#)
 
 ---
 

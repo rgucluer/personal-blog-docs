@@ -1,17 +1,17 @@
 ## Configure the Payload Project
 
 - Coolify Web UI -> Projects -> < coolify-project-name > ( production )
-  - Resource -> < coolify-application-name >   Type: Application
-    - Settings -> General
+  - Resource -> Application: < coolify-application-name >   
+    - General
       - Application details -> Click Reload Compose
       - Name: < coolify-application-name >
         - personal-blog
       - Description: Personal blog application made with Payload CMS
         - Save changes
-      - Build pipeline
+      - Build & deploy
         - Build strategy: Compose
         - Base Directory: /
-        - Check: Preserve repository during deployment
+        - Uncheck: Preserve repository during deployment
         - Docker compose location : /docker-compose.yml
         - Save changes
       - Docker Compose
@@ -54,27 +54,29 @@
       - CRON_SECRET: < copy value from local copy .env file to here , or Enter_your_password_here >
       - PREVIEW_SECRET: < copy value from local copy .env file to here , or Enter_your_password_here >
 
-    - Settings -> Advanced
-      - Build
+    - Advanced
+      - Build & Deploy
         - Build cache: Use Docker build cache
         - Build arguments: Inject Build Args automatically
-        - Source commit availability: Runtime only
+        - Source commit availability: Runtime only (preserves cache)
+        - Deployment
+          - Auto Deploy: Manual deployments only
+        - Git
+          - Submodules: Clone submodules
+          - Git LFS: Enabled
+          - Clone depth: Shallow clone (latest commit only)
+        - Docker Compose
+          - Compose deployment: Managed by Coolify
+          - Predefined network: Connect to predefined network
       - Container:
         - Container naming: Generated name (rolling updates)
-      - Deployment
-        - Auto Deploy: Manual deployments only
-      - Git
-        - Submodules: Clone submodules
-        - Git LFS: Enabled
-        - Clone depth: Shallow clone
-      - Docker Compose
-        - Compose deployment: Managed by Coolify
-        - Predefined network: Connect to predefined network
       - Proxy
         - Gzip compression: Enabled
         - Path prefixes: Strip prefixes
+        - Certificate resolver: Server setting (letsencrypt)
 
-    - Deploy -> Git Source
+    - Git Source
+      - Connected source: < github-app-name-vm >
       - Repository:
         - < github-username >/< github-repo-name >
       - Branch: 
@@ -82,7 +84,10 @@
       - Commit SHA
         - HEAD
       - Save changes
- 
+
+    - Preview Deployments
+      - Disabled ( Showing `Enable Preview Deployments` button )
+
     - Operations -> Resource Limits
       - CPU
         - CPU limit: 0.5

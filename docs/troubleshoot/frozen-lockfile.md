@@ -1,4 +1,4 @@
-Run Virtual Machine, database service must be runnning. Stop payload service in VM if it is running .
+Run Virtual Machine, database service must be runnning. Stop payload service in VM, if it is running .
 
 On Dev PC
 ```bash
@@ -8,24 +8,25 @@ $ cd < payload-app-full-path >
 Check the version of the Docker image, update if necessary
 ```Dockerfile
 # .....
-ARG NODE_VERSION=22.23.2-alpine
+ARG NODE_VERSION=24.22.1-alpine
 # .....
 ```
 
 - Check Payload CMS https://github.com/payloadcms/payload
-  - Check tags
+  - Check tags/releases
 ```text
-v3.90.2
+v3.92.1
 ```
 
 - Check version in package.json, bump up version if necessary.
   - https://github.com/rgucluer/personal-blog/blob/main/package.json
+  - Update Payload [payload/update-payload](../payload/update-payload.md)
 - Check Docker image version in docker-compose.yml, change if necessary.
 ```yaml
 services:
   payload:
     # .....
-    image: custom-payload-website:3.90.2-build.3
+    image: custom-payload-website:3.92.1-build.1
 ```
 
 - Set output to standalone in next.config.ts .
@@ -102,7 +103,7 @@ $ pnpm dev
 
 Check `http://localhost:3000`
 
-Fix any error if occurs. If page renders without pictures, it is OK. Stop the service CTRL + C 
+Fix any error if occurs. If page renders with/without pictures, it is OK. Stop the service CTRL + C 
 
 ```bash
 $ pnpm build
@@ -125,10 +126,11 @@ or
 $ git push origin main
 ```
 
+- Check all environment variables on Virtual Machine 
+
 - Coolify UI -> Projects -> < coolify-project-name > -> < coolify-application-name >
   - Stop application if it is running
   - Reload Compose File
-  - Save
 
 - Coolify UI -> Projects -> < coolify-project-name > -> < coolify-application-name > -> Redeploy
 or

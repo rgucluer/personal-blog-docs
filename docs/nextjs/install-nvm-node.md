@@ -2,20 +2,20 @@
 
 On Controller PC
 - Add your ssh keys
-- When you see a $ sign in a terminal, it means enter command after it. I will use this notation from now on. Will fix the documentation before this point as soon as possible.
+- When you see a $ sign in a terminal, it means enter command after it.
   - Done this to differentiate between result displaying terminals from action needed terminals.
 
 ## Install nvm 
 
 https://nodejs.org/en/download
 
-Get Node.js 22 (LTS) for Linux using nvm with pnpm
+Get Node.js 24 (LTS) for Linux using nvm with pnpm
 
 Select from select boxes,
-- Get Node.js: v22 LTS
+- Get Node.js: v24 LTS
 - for: Linux
 - using: nvm
-- with: npm
+- with: pnpm
 
 On Developer PC
 
@@ -23,7 +23,7 @@ On Developer PC
 $ cd ~
 ```
 ```bash
-$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.6/install.sh | bash
+$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.8/install.sh | bash
 ```
 
 ```bash
@@ -39,22 +39,22 @@ If the result is "nvm" then nvm installation is complete.
 ## Install Node
 
 ```bash
-$ nvm install 22
+$ nvm install 24
 ```
 
 ```bash
-$ nvm use 22
+$ nvm use 24
 ```
 
 ```bash
-$ nvm alias default 22
+$ nvm alias default 24
 ```
 
 ```bash
 $ node -v
 ```
 ```bash
-v22.23.2
+v24.22.1
 ```
 
 ## Install pnpm

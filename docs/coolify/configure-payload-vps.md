@@ -2,16 +2,16 @@
 
 - Coolify Web UI -> Projects -> < coolify-project-name > ( production ) ( payload-project )
   - Resource -> Application: < coolify-application-name > ( personal-blog )
-    - Settings -> General
-      - Click Reload Compose
+    - General
+      - Application details -> Click Reload Compose
       - Name: < coolify-application-name >
         - personal-blog
       - Description: Personal blog application made with Payload CMS
         - Save changes
-      - Build pipeline
+      - Build & deploy
         - Build strategy: Compose
         - Base Directory: /
-        - Check: Preserve Repository During Deployment
+        - Uncheck: Preserve Repository During Deployment
         - Docker compose location : /docker-compose.yml
         - Save changes
       - Docker Compose
@@ -35,10 +35,15 @@
     - Settings -> Environment Variables
       - Add the following variables
         - For every variable
-          - Value type: Single line
-          - Build time: Available during build
-          - Interpolation: Interpolate $VARIABLES
-          - Runtime: Available in the container
+          - Click Add
+          - New Environment Variable Form
+            - Name: Enter environment variable here
+            - Value type: Single line
+            - Build time: Available during build
+            - Interpolation: Interpolate $VARIABLES
+            - Runtime: Available in the container
+            - Interpolation: Interpolate $VARIABLES
+          - Click Add Variable
       - NODE_OPTIONS: --no-deprecation --max-old-space-size=2048
       - HOSTNAME: 0.0.0.0
       - DATABASE_URL: Get value from mongodb-payload Mongo URL (internal), and paste as value. 
@@ -48,13 +53,11 @@
       - CRON_SECRET: < copy value from local .env file , or Enter_your_password_here >
       - PREVIEW_SECRET: < copy value from local .env file , or Enter_your_password_here >
 
-    - Settings -> Advanced
-      - Build
+    - Advanced
+      - Build & Deploy
         - Build cache: Use Docker build cache
         - Build arguments: Inject Build Args automatically
-        - Source commit availability: Runtime only
-      - Container:
-        - Container naming: Generated name (rolling updates)
+        - Source commit availability: Runtime only (preserves cache)
       - Deployment
         - Auto Deploy: Manual deployments only
       - Git
@@ -64,11 +67,14 @@
       - Docker Compose
         - Compose deployment: Managed by Coolify
         - Predefined network: Connect to predefined network
+      - Container:
+        - Container naming: Generated name (rolling updates)
       - Proxy
         - Gzip compression: Enabled
         - Path prefixes: Strip prefixes
+        - Certificate resolver: Server setting (letsencrypt)
 
-    - Deploy -> Git Source
+    - Git Source
       - Connected source: < github-app-name-vps >  ( personal-blog-vps )
       - Repository:
         - < github-username >/< github-repo-name >
@@ -76,9 +82,9 @@
         - main
       - Commit SHA
         - HEAD
-      - Save
+      - Save changes
 
-    - Deploy -> Preview Deployments
+    - Preview Deployments
       - Disabled ( Showing `Enable Preview Deployments` button )
 
     - Operations -> Resource Limits
@@ -94,7 +100,7 @@
         - Save changes
         - ( Set Memory values to according to your setup. )
 
-    - Settings -> General -> Access -> Public access
+    - General -> Access -> Public access
       - https://< prod-domain-name >
         - Click Manage Domains
       - Check Domains for personal-blog

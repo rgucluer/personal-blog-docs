@@ -7,10 +7,10 @@
 
 ## Coolify - Add a new Project
 
-- Coolify Web UI -> Projects -> New Project
+- Coolify Web UI -> Projects
   - New Project
     - Name: personal-blog
-    - Description: Personal Blog made with Payload CMS
+    - Description: Personal Blog made with Payload CMS and Coolify
     - Create project
 
 ## Create a MongoDB using Coolify [payload/create-mongodb](create-mongodb.md)
@@ -25,6 +25,9 @@ If you are creating a new Payload CMS application, and did not committed to a gi
 ### Method Two: Create app with cloning a git repository [payload/method-two/create-payload-cms-m2](method-two/create-payload-cms-m2.md)
 If you already have a git repository, use this method.
 
+Current:
+### Add Collection: Writers [payload/add-writers](payload/add-writers.md)
+
 ## Add a new source ( GitHub App ) to Coolify [coolify/add-new-source](../coolify/add-new-source.md)
 
 ## Add Source to the Project [coolify/add-source-to-project](../coolify/add-source-to-project.md)
@@ -33,7 +36,7 @@ We added the source (GitHub App) to Coolify Sources section in previous step. No
 ## Configure the Payload Project [coolify/configure-payload-dev](../coolify/configure-payload-dev.md)
 
 ## Deploy / Redeploy Payload Application
-- !ATTENTION! Deploy operation will delete all content. 
+- !ATTENTION! Deploy operation will DELETE all content. 
   - TODO: Implement Backup/Restore operations before/after deployment.
 - Coolify UI on VM (https://coolify.< dev-domain-name >)
   - Projects : < coolify-project-name > -> Applications : < coolify-application-name >

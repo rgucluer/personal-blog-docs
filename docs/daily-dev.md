@@ -148,33 +148,28 @@ $ pnpm update @payloadcms/* --latest
 ### Check version of the following
 - Node docker image
   - Check the version of the Docker image in Dockerfile, update if necessary
+  - < payload-app-full-path >/Dockerfile
   ```Dockerfile
   # .....
-  ARG NODE_VERSION=22.23.2-alpine
+  ARG NODE_VERSION=24.22.1-alpine
   # .....
   ```
-  - Node.js Stable version
-    - https://nodejs.org/en/download
-    - Select v22 LTS
-    - v22.23.2
-  - A suitable tag for NODE_VERSION
-    - https://hub.docker.com/_/node
-    - 22.23.2-alpine
-
+- https://nodejs.org/en
+  - v24.22.1 Latest LTS
 
 - Check Docker image version in docker-compose.yml, change if necessary.
 ```yaml
 services:
   payload:
     # .....
-    image: custom-payload-website:3.90.2-build.3
+    image: custom-payload-website:3.92.0-build.1
 ```
 
 - Check version in package.json, bump up version if necessary.
 ```javascript
 {
   "name": "personal-blog",
-  "version": "0.2.18",
+  "version": "0.2.21",
 .....
 }
 ```

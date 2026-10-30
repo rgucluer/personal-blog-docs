@@ -22,7 +22,7 @@ https://coolify.io/docs/knowledge-base/proxy/traefik/wildcard-certs
       - Click `Continue to HTTP Site`
 
 - Coolify Web UI 
-  - Settings -> Configuration -> General
+  - Settings -> General
     - URL: https://coolify.< prod-domain-name >
     - Name: coolify-vps
     - Redirect HTTP to HTTPS: Enabled
@@ -31,11 +31,10 @@ https://coolify.io/docs/knowledge-base/proxy/traefik/wildcard-certs
     - Network addresses
       - Do not change Instance public IPv4
       - Do not change Instance public IPv6
-    - Save changes
 
 ### Set DNS Servers
 
-- Settings -> Configuration -> Advanced
+- Settings -> Advanced
   - DNS Validation
     - DNS Validation: Disabled
   - Custom DNS Servers:
@@ -46,16 +45,17 @@ https://coolify.io/docs/knowledge-base/proxy/traefik/wildcard-certs
       - `< vps-ip-address >`
       - seperated with a comma
     - API Access: Enabled
+    - MCP Server: Disabled
   - DNS Validation
     - DNS Validation: Enabled
   - Interface and telemetry
     - Navigation: SPA navigation
-
+    - Choose the others as you wish
 ---
 
 ### Setup General Settings for the Virtual Private Server
 - Coolify Web User Interface:
-  - Servers -> < vps-server-name > -> Settings -> General -> Connection
+  - Servers -> < vps-server-name > -> General -> Connection
     - Name: < vps-server-name >  (initial value: localhost)
       - server1
     - IP Address/Domain: host.docker.internal
@@ -70,12 +70,10 @@ https://coolify.io/docs/knowledge-base/proxy/traefik/wildcard-certs
   - Refresh Page
 
 ### Setup Sentinel for the Virtual Private Server
-- Servers -> < servername > -> Platform -> Sentinel
+- Servers -> < servername > -> -> Sentinel
   - Connection -> Coolify URL
     - https://coolify.< prod-domain-name >
-    - Sentinel Enabled
     - Click Sync button if Sentinel is out of Sync
-  - Save Changes
 
 ---
 
@@ -100,10 +98,11 @@ Enter a password you choose twice. This will save your traefik user name and enc
 
 ### Edit Traefik Configuration on VPS
 - Coolify Web User Interface:
-  - Servers -> < servername > -> Platform -> Proxy -> 
+  - Servers -> < servername > -> -> Proxy -> Configuration
     - Routing behavior
       - Generated labels: Labels for the active proxy only
       - Unknown requests: Return the default 503 response
+      - Certificate resolver: letsencrypt
     - Traefik configuration
       - Add or modify the following sections: 
         - Remove section networks if exists
@@ -184,10 +183,13 @@ services:
       - '--certificatesresolvers.letsencrypt.acme.dnschallenge.resolvers[4]=8.8.8.8:53'
       - '--accesslog.format=json'
       - '--global.sendAnonymousUsage=false'
+      .....
     labels:
       - traefik.enable=true
       - coolify.managed=true
       - coolify.proxy=true
+    traefik-logrotate:
+    .....
 ```  
 
 Save Changes
@@ -198,7 +200,7 @@ https://doc.traefik.io/traefik/expose/docker/
 
 ### Add Traefik Dynamic Configuration
 
-- Coolify UI -> Servers -> < servername > -> Platform -> Proxy -> Dynamic Configurations
+- Coolify UI -> Servers -> < servername > -> Proxy -> Dynamic Configurations
   - +Add
     - Filename: traefik-dashboard.yml
 ```yaml

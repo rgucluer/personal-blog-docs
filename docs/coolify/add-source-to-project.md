@@ -3,7 +3,7 @@
 - Coolify Web UI -> Projects -> < coolify-project-name > ( production )
   - Click +New Resource
     - Applications 
-      - Click Git Repository ( with GitHub App ) Deploy button
+      - Click `Git Repository ( with GitHub App )` Deploy button
         - Choose GitHub App: Click < github-app-name-vm > button
           - Choose repository: -> Repository: < github-username >/< github-repo-name >
           - Click Load Repository
@@ -18,7 +18,7 @@
               - Application details
                 - Set Name: < coolify-application-name >
                   - personal-blog
-            - Save changes
+              - Save changes
 
 ---
 
